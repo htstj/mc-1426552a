@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="zh-Hant-TW" data-pack="premium">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>結婚登記與婚後行政清單－付費工具包（網頁版）</title>
+<style>
+
+:root {
+  --ink: #1f2328;
+  --muted: #5a6570;
+  --navy: #16324f;
+  --teal: #2f6f73;
+  --warm: #B8796A;
+  --gold: #C4A574;
+  --cream: #FBF5F0;
+  --paper: #FFF9F4;
+  --line: #E2CDB8;
+  --max: 42rem;
+}
+* { box-sizing: border-box; }
+html {
+  font-family: "Noto Sans CJK TC", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
+               "Source Han Sans TC", "DejaVu Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: #f7f4f1;
+}
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+.cover {
+  position: relative;
+  background: var(--cream);
+  color: #4A3428;
+  border-radius: 0 0 1rem 1rem;
+  padding: 2rem 1.25rem 1.75rem;
+  margin: 0 -1rem 1.5rem;
+  overflow: hidden;
+}
+.cover .deco-top, .cover .deco-bottom { position: relative; height: 1.1rem; margin-bottom: .75rem; }
+.cover .deco-bottom { margin: 1rem 0 0; }
+.cover .soft-orb { position: absolute; border-radius: 50%; opacity: .35; pointer-events: none; }
+.cover .orb-a { width: 7rem; height: 7rem; background: #F0D9C8; top: -1.5rem; right: -1rem; }
+.cover .orb-b { width: 4.5rem; height: 4.5rem; background: #E8C9B0; bottom: 3rem; left: -1.5rem; }
+.cover .orb-c { width: 3rem; height: 3rem; background: #F2E0D0; top: 5rem; left: 1.5rem; }
+.cover .rings { position: absolute; top: 0; right: .25rem; width: 4.5rem; height: 2.8rem; }
+.cover .gold-line { height: 0; border-top: 2px solid var(--gold); width: 100%; }
+.cover .gold-line.thin { border-top-width: 1px; opacity: .7; margin-top: .35rem; }
+.cover .tier {
+  font-size: .95rem; letter-spacing: .18em; color: var(--warm); font-weight: 700; margin-bottom: .75rem;
+}
+.cover h1 { font-size: 1.65rem; line-height: 1.3; margin: 0 0 .5rem; color: #4A3428; }
+.cover .sub { font-size: 1.05rem; color: var(--warm); margin: 0 0 1rem; }
+.cover .rule { border-top: 2.5px solid var(--gold); width: 3.5rem; margin: 0 0 .85rem; }
+.cover > p { margin: 0 0 .6rem; }
+.cover .meta {
+  border: 1px solid var(--line); border-radius: .75rem; padding: .9rem 1rem; margin-top: 1rem;
+  background: var(--paper);
+}
+.cover .meta ul { margin: 0 0 .5rem; padding-left: 1.15rem; }
+.cover .edition-note {
+  margin-top: .85rem; font-size: .9rem; color: #6a5a4e;
+}
+.toc {
+  background: #fff;
+  border: 1px solid #e5e0da;
+  border-radius: .75rem;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.toc-title {
+  font-size: 1.2rem; color: var(--navy); border-bottom: 2px solid var(--teal);
+  padding-bottom: .4rem; margin: 0 0 .6rem;
+}
+.toc ul { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: .35rem 0; }
+.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted #c9c2ba; }
+.toc a:hover { color: var(--teal); }
+main h2 {
+  font-size: 1.25rem; color: var(--navy); border-bottom: 2px solid var(--teal);
+  padding-bottom: .35rem; margin: 2rem 0 .75rem; scroll-margin-top: 1rem;
+}
+main h3 { font-size: 1.08rem; color: var(--teal); margin: 1.25rem 0 .4rem; }
+main h4 { font-size: 1rem; color: var(--navy); margin: 1rem 0 .35rem; }
+main p { margin: 0 0 .7rem; }
+main p.label { font-weight: 700; margin-top: .9rem; }
+main ul, main ol { margin: 0 0 .9rem; padding-left: 1.25rem; }
+main li { margin: .25rem 0; }
+ul.check { list-style: none; padding-left: 0; }
+ul.check li {
+  padding-left: 1.6rem; text-indent: -1.6rem; margin: .45rem 0;
+}
+.box {
+  font-family: "DejaVu Sans", "Noto Sans Symbols", sans-serif;
+  font-size: 1.05rem; display: inline-block; width: 1.6rem; text-indent: 0; color: var(--navy);
+}
+.table-wrap {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  margin: .5rem 0 1rem; border-radius: .4rem;
+}
+table {
+  border-collapse: collapse; width: 100%; min-width: 28rem; font-size: .9rem;
+}
+table.wide { font-size: .88rem; min-width: 34rem; }
+th { background: #e6eef2; color: var(--navy); text-align: left; }
+th, td { border: 1px solid #b8c7d1; padding: .45rem .55rem; vertical-align: top; }
+a.url { color: #1a5fb4; text-decoration: underline; word-break: break-all; overflow-wrap: anywhere; }
+.letter {
+  border: 1px dashed #8aa3b3; background: #fafbfc; padding: .85rem 1rem;
+  margin: .6rem 0 1rem; border-radius: .5rem;
+}
+.site-footer {
+  margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #ddd;
+  font-size: .85rem; color: var(--muted);
+}
+@media (min-width: 720px) {
+  html { font-size: 18px; }
+  .cover { margin: 1rem 0 1.75rem; border-radius: 1rem; padding: 2.5rem 2rem; }
+  .wrap { padding: 0 1.5rem 3.5rem; }
+}
+@media (max-width: 360px) {
+  html { font-size: 16px; }
+  .cover h1 { font-size: 1.4rem; }
+}
+
+
+/* web-v1.2: interactive checklist + backup */
+ul.check li {
+  padding-left: 0; text-indent: 0;
+  display: flex; align-items: flex-start; gap: .45rem;
+}
+ul.check li label {
+  display: flex; align-items: flex-start; gap: .45rem;
+  cursor: pointer; width: 100%;
+}
+ul.check input.chk {
+  flex: 0 0 auto; width: 1.15rem; height: 1.15rem;
+  margin: .2rem 0 0; accent-color: var(--teal);
+}
+.tool-panel {
+  background: #fff;
+  border: 1px solid #e5e0da;
+  border-radius: .75rem;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1.5rem;
+}
+.tool-panel h2 {
+  font-size: 1.15rem; color: var(--navy); border-bottom: 2px solid var(--teal);
+  padding-bottom: .35rem; margin: 0 0 .75rem;
+}
+.tool-panel h3 { font-size: 1rem; color: var(--teal); margin: 1rem 0 .4rem; }
+.tool-panel p, .tool-panel li { font-size: .95rem; }
+.tool-panel .warn {
+  background: #FFF4EC; border: 1px solid #E8C9B0; border-radius: .5rem;
+  padding: .75rem .9rem; margin: .6rem 0 .9rem; color: #4A3428;
+}
+.tool-actions {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0 .4rem;
+}
+.tool-actions button, .tool-actions label.file-btn {
+  font: inherit; font-size: .95rem; cursor: pointer;
+  background: var(--navy); color: #fff; border: none;
+  border-radius: .45rem; padding: .55rem .9rem;
+}
+.tool-actions button.secondary {
+  background: #fff; color: var(--navy); border: 1px solid var(--navy);
+}
+.tool-actions label.file-btn { display: inline-block; }
+.tool-actions input[type=file] { display: none; }
+.tool-status { font-size: .88rem; color: var(--muted); min-height: 1.2em; margin: .35rem 0 .2rem; }
+.tool-panel textarea.notes {
+  width: 100%; min-height: 4.5rem; font: inherit; font-size: .95rem;
+  border: 1px solid #c9c2ba; border-radius: .4rem; padding: .55rem .7rem;
+  resize: vertical; background: var(--paper);
+}
+.open-steps ol { margin: 0 0 .7rem; padding-left: 1.25rem; }
+.open-steps li { margin: .3rem 0; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="cover"><div class="deco-top"><div class="gold-line"></div><div class="gold-line thin"></div><svg class="rings" viewBox="0 0 90 55" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="28" r="16" fill="none" stroke="#C4A574" stroke-width="2"/><circle cx="58" cy="28" r="16" fill="none" stroke="#B8796A" stroke-width="2"/></svg></div><div class="soft-orb orb-a"></div><div class="soft-orb orb-b"></div><div class="soft-orb orb-c"></div><div class="deco-bottom"><div class="gold-line thin"></div><div class="gold-line"></div></div><div class="tier">付費工具包</div><h1>結婚登記與婚後行政清單｜付費工具包</h1><p class="sub">從文件準備、登記時程到婚後資料變更，一次整理</p><div class="rule"></div><p>本工具包以台灣一般婚姻登記及婚後行政事項為範圍。</p><p>除了基礎版的法規摘要、主管機關連結與辦理流程，另提供可列印檢查表、時程規劃工具、婚後多機關追蹤表、行政通知信範本及兩人分工表。</p><p>讓結婚登記前的準備工作更有條理，也方便在完成登記後逐項追蹤行政資料。</p><p>本包多的是工具與範本，不含個案諮詢或代辦。</p><div class="meta"><p>資訊更新日：2026-11-09</p><p>版本：v1.9</p></div><p class="edition-note">手機／網頁版式 v1.2（內容對應 A4 v1.9）</p></section>
+<section class="toc"><h1 class="toc-title">目錄</h1><ul><li><a href="#s516_1">重要聲明</a></li><li><a href="#s516_2">B. 臨櫃前檢查表</a></li><li><a href="#s516_3">C. 出發前24小時複核單</a></li><li><a href="#s516_4">D. 結婚書約欄位檢查小卡</a></li><li><a href="#s516_5">E. 登記日／假日／熱門日時程尺</a></li><li><a href="#s516_6">F. 婚後多機關變更追蹤—使用說明</a></li><li><a href="#s516_7">G. 冠姓後換證追蹤—使用說明</a></li><li><a href="#s516_8">H. 空白涉外文件進度表—使用說明</a></li><li><a href="#s516_9">I. 行政變更通知信範本二則</a></li><li><a href="#s516_10">J. 兩人／家人分工表—使用說明與示例任務列</a></li><li><a href="#s516_11">K. 付費包檔案清單</a></li><li><a href="#buy_p">購買須知</a></li><li><a href="#backup">本機勾選與備份</a></li><li><a href="#open-howto">如何開啟（電腦／手機）</a></li></ul></section>
+<section class="tool-panel" id="tool-panel" data-pack="premium">
+<h2 id="backup">本機勾選與備份</h2>
+<div class="warn">
+<p><strong>資料只存在這個瀏覽器。</strong>換裝置、清除瀏覽器資料，或一段時間沒用時，資料可能不見。請定期按「匯出備份」。我們無法替你復原。</p>
+</div>
+<p>勾選與下方備註只會自動保存在這個瀏覽器的本機儲存，本工具不會把它們上傳到任何伺服器（點開法規連結時，會像一般上網一樣連到該網站）。建議用電腦瀏覽器為主；手機請用 Safari 或 Chrome 開啟本檔。</p>
+<label for="personal-notes"><strong>個人備註（選填，僅存本機）</strong></label>
+<textarea class="notes" id="personal-notes" maxlength="4000" placeholder="可寫自己的提醒；內容只留在這個瀏覽器。"></textarea>
+<div class="tool-actions">
+<button type="button" id="btn-export">匯出備份</button>
+<button type="button" class="secondary" id="btn-import">匯入備份</button>
+<input type="file" id="import-file" accept="application/json,.json">
+</div>
+<p class="tool-status" id="tool-status" role="status" aria-live="polite"></p>
+<p>匯出檔為 JSON，檔名含日期。匯入前會再確認是否覆蓋。備份檔含你填的備註，請自行妥善保存。</p>
+
+<h2 id="open-howto">如何開啟（電腦／手機）</h2>
+<div class="open-steps">
+<h3>建議：電腦瀏覽器</h3>
+<ol>
+<li>把本 HTML 檔下載到電腦。</li>
+<li>用 Chrome、Edge、Firefox 或 Safari 直接開啟檔案（雙擊或拖進視窗）。</li>
+<li>開始勾選；需要換機或備份時，按「匯出備份」。</li>
+</ol>
+<h3>iPhone／iPad（Safari）</h3>
+<ol>
+<li>先把檔案存到「檔案」App（例如下載項目或 iCloud Drive）。</li>
+<li>若分享選單中有「Safari」或「用 Safari 開啟」，請選它開啟；若沒有，建議改用電腦瀏覽器，或在手機上閱讀手機版 PDF。</li>
+<li>在 Safari 裡勾選與備份。請定期按「匯出備份」。</li>
+</ol>
+<p>說明：僅用「檔案」App 點開預覽，可能無法勾選或儲存；請改以 Safari 開啟。</p>
+<h3>Android（Chrome）</h3>
+<ol>
+<li>用 Chrome 下載本 HTML，或從「檔案」選取後以 Chrome 開啟。</li>
+<li>在 Chrome 中勾選；請定期按「匯出備份」。</li>
+</ol>
+<p>Excel 追蹤表建議在電腦上設定與使用；手機端主要用來查看。</p>
+</div>
+</section>
+<main>
+<h2 id="s516_1">重要聲明</h2>
+<p>本商品為一般流程整理與待辦工具，僅供參考，不構成法律意見、稅務意見或移民業務，亦不構成個案諮詢或代辦。</p>
+<p>作者不是律師、會計師、記帳士、地政士或移民業務人員，未受委任為您分析案情、計算稅額、填寫或提出任何申請。</p>
+<p>內容以中華民國（台灣）法規與政府公開資訊為範圍；法規、規費、罰鍰與機關作業方式可能變更。</p>
+<p>封面標示「資訊更新日」；各條引用另標「查閱日」。使用前請自行核對全國法規資料庫與各主管機關最新網頁。</p>
+<p>涉外、大陸或港澳相關規定依當事人國籍與身分而異，請以主管機關最新公告為準。</p>
+<p>健保與勞保制度不同：勞工保險並無「眷屬加保」；全民健康保險之配偶眷屬以「無職業之配偶」等法定要件為準，請向投保單位確認。</p>
+<p>個案請洽戶政事務所、主管機關，或執業律師／會計師／依法許可之專業人員。</p>
+<h2 id="s516_2">B. 臨櫃前檢查表</h2>
+<p>用途：出發前確認文件及辦理事項，降低漏帶資料或白跑的可能。</p>
+<h3>1. 登記基本資料</h3>
+<ul class="check">
+<li><label for="c1"><input class="chk" type="checkbox" id="c1" data-id="c1"><span>已確認預計辦理的戶政事務所。</span></label></li>
+<li><label for="c2"><input class="chk" type="checkbox" id="c2" data-id="c2"><span>已確認受理時間。</span></label></li>
+<li><label for="c3"><input class="chk" type="checkbox" id="c3" data-id="c3"><span>已確認雙方當事人的辦理安排。</span></label></li>
+<li><label for="c4"><input class="chk" type="checkbox" id="c4" data-id="c4"><span>已確認是否需要網路預約。</span></label></li>
+<li><label for="c5"><input class="chk" type="checkbox" id="c5" data-id="c5"><span>已確認預約是否完成。</span></label></li>
+<li><label for="c6"><input class="chk" type="checkbox" id="c6" data-id="c6"><span>已確認預約日期與地點。</span></label></li>
+<li><label for="c7"><input class="chk" type="checkbox" id="c7" data-id="c7"><span>已確認是否涉及指定登記日。</span></label></li>
+<li><label for="c8"><input class="chk" type="checkbox" id="c8" data-id="c8"><span>已向戶政事務所確認特殊情形的辦理方式。</span></label></li>
+</ul>
+<h3>2. 身分及戶籍資料</h3>
+<ul class="check">
+<li><label for="c9"><input class="chk" type="checkbox" id="c9" data-id="c9"><span>雙方身分證明文件已依戶所要求準備。</span></label></li>
+<li><label for="c10"><input class="chk" type="checkbox" id="c10" data-id="c10"><span>戶口名簿已依戶所要求準備。</span></label></li>
+<li><label for="c11"><input class="chk" type="checkbox" id="c11" data-id="c11"><span>已確認文件是否需要正本。</span></label></li>
+<li><label for="c12"><input class="chk" type="checkbox" id="c12" data-id="c12"><span>已確認文件內容是否清晰、完整。</span></label></li>
+<li><label for="c13"><input class="chk" type="checkbox" id="c13" data-id="c13"><span>已確認姓名及其他基本資料。</span></label></li>
+<li><label for="c14"><input class="chk" type="checkbox" id="c14" data-id="c14"><span>已確認是否有其他補充文件要求。</span></label></li>
+</ul>
+<h3>3. 結婚書約</h3>
+<ul class="check">
+<li><label for="c15"><input class="chk" type="checkbox" id="c15" data-id="c15"><span>已準備結婚書約（結婚證明文件正本；依施行細則第13條）。</span></label></li>
+<li><label for="c16"><input class="chk" type="checkbox" id="c16" data-id="c16"><span>已填妥雙方當事人欄位。</span></label></li>
+<li><label for="c17"><input class="chk" type="checkbox" id="c17" data-id="c17"><span>已確認書約內容完整。</span></label></li>
+<li><label for="c18"><input class="chk" type="checkbox" id="c18" data-id="c18"><span>已有二名以上成年（現行年滿 18 歲）且未受監護宣告的證人簽名。</span></label></li>
+<li><label for="c19"><input class="chk" type="checkbox" id="c19" data-id="c19"><span>已確認簽名欄位沒有遺漏。</span></label></li>
+<li><label for="c20"><input class="chk" type="checkbox" id="c20" data-id="c20"><span>已檢查有無誤植或不一致。</span></label></li>
+<li><label for="c21"><input class="chk" type="checkbox" id="c21" data-id="c21"><span>已確認戶政事務所對書約格式的要求。</span></label></li>
+</ul>
+<h3>4. 照片與其他資料</h3>
+<ul class="check">
+<li><label for="c22"><input class="chk" type="checkbox" id="c22" data-id="c22"><span>已確認是否需要照片。</span></label></li>
+<li><label for="c23"><input class="chk" type="checkbox" id="c23" data-id="c23"><span>已確認照片規格。</span></label></li>
+<li><label for="c24"><input class="chk" type="checkbox" id="c24" data-id="c24"><span>備妥最近二年內拍攝、符合規格的彩色相片 1 張，或事先上傳數位相片；戶政事務所已存檔未滿二年且人貌相符的相片，得免繳交（依戶政事務所認定）。</span></label></li>
+<li><label for="c25"><input class="chk" type="checkbox" id="c25" data-id="c25"><span>已向戶政事務所確認是否有特殊要求。</span></label></li>
+</ul>
+<h3>5. 費用與證明文件</h3>
+<ul class="check">
+<li><label for="c26"><input class="chk" type="checkbox" id="c26" data-id="c26"><span>已確認是否需要換發國民身分證。</span></label></li>
+<li><label for="c27"><input class="chk" type="checkbox" id="c27" data-id="c27"><span>已確認是否需要戶口名簿。</span></label></li>
+<li><label for="c28"><input class="chk" type="checkbox" id="c28" data-id="c28"><span>已確認是否需要結婚證明書。</span></label></li>
+<li><label for="c29"><input class="chk" type="checkbox" id="c29" data-id="c29"><span>已確認相關規費。</span></label></li>
+<li><label for="c30"><input class="chk" type="checkbox" id="c30" data-id="c30"><span>已確認希望領取的文件種類及份數。</span></label></li>
+</ul>
+<h3>6. 出發前最後確認</h3>
+<ul class="check">
+<li><label for="c31"><input class="chk" type="checkbox" id="c31" data-id="c31"><span>雙方已確認辦理安排。</span></label></li>
+<li><label for="c32"><input class="chk" type="checkbox" id="c32" data-id="c32"><span>文件已集中放置。</span></label></li>
+<li><label for="c33"><input class="chk" type="checkbox" id="c33" data-id="c33"><span>已保存預約資訊。</span></label></li>
+<li><label for="c34"><input class="chk" type="checkbox" id="c34" data-id="c34"><span>已確認戶政事務所公告沒有更新。</span></label></li>
+<li><label for="c35"><input class="chk" type="checkbox" id="c35" data-id="c35"><span>已確認沒有尚未處理的特殊文件問題。</span></label></li>
+</ul>
+<h3>本次確認紀錄</h3>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>自行填寫</th></tr></thead><tbody><tr><td>預計辦理日期</td><td>__________</td></tr><tr><td>受理戶政事務所</td><td>__________</td></tr><tr><td>預約狀態</td><td>__________</td></tr><tr><td>文件確認人</td><td>__________</td></tr><tr><td>最後確認日期</td><td>__________</td></tr><tr><td>尚待確認事項</td><td>__________</td></tr></tbody></table></div>
+<p>注意：此清單為通用準備工具，不代表勾選完成即符合所有戶政機關受理條件。</p>
+<h2 id="s516_3">C. 出發前24小時複核單</h2>
+<p>用途：在出發前再次確認重要事項，避免使用舊資訊或遺漏文件。</p>
+<h3>預約與時間</h3>
+<ul class="check">
+<li><label for="c36"><input class="chk" type="checkbox" id="c36" data-id="c36"><span>預約日期正確。</span></label></li>
+<li><label for="c37"><input class="chk" type="checkbox" id="c37" data-id="c37"><span>預約時段正確。</span></label></li>
+<li><label for="c38"><input class="chk" type="checkbox" id="c38" data-id="c38"><span>辦理地點正確。</span></label></li>
+<li><label for="c39"><input class="chk" type="checkbox" id="c39" data-id="c39"><span>已重新確認戶政事務所公告。</span></label></li>
+<li><label for="c40"><input class="chk" type="checkbox" id="c40" data-id="c40"><span>已確認是否有臨時異動。</span></label></li>
+<li><label for="c41"><input class="chk" type="checkbox" id="c41" data-id="c41"><span>已確認指定登記日的辦理安排。</span></label></li>
+</ul>
+<h3>文件</h3>
+<ul class="check">
+<li><label for="c42"><input class="chk" type="checkbox" id="c42" data-id="c42"><span>雙方身分證明文件已備妥。</span></label></li>
+<li><label for="c43"><input class="chk" type="checkbox" id="c43" data-id="c43"><span>戶口名簿已依要求備妥。</span></label></li>
+<li><label for="c44"><input class="chk" type="checkbox" id="c44" data-id="c44"><span>結婚書約（正本）已備妥。</span></label></li>
+<li><label for="c45"><input class="chk" type="checkbox" id="c45" data-id="c45"><span>證人簽名已完成。</span></label></li>
+<li><label for="c46"><input class="chk" type="checkbox" id="c46" data-id="c46"><span>照片已依要求準備：備妥最近二年內拍攝、符合規格的彩色相片 1 張，或事先上傳數位相片；戶政事務所已存檔未滿二年且人貌相符的相片，得免繳交（依戶政事務所認定）。</span></label></li>
+<li><label for="c47"><input class="chk" type="checkbox" id="c47" data-id="c47"><span>特殊情況所需文件已確認。</span></label></li>
+</ul>
+<h3>當日需求</h3>
+<ul class="check">
+<li><label for="c48"><input class="chk" type="checkbox" id="c48" data-id="c48"><span>已確認是否需要換發身分證。</span></label></li>
+<li><label for="c49"><input class="chk" type="checkbox" id="c49" data-id="c49"><span>已確認是否需要戶口名簿。</span></label></li>
+<li><label for="c50"><input class="chk" type="checkbox" id="c50" data-id="c50"><span>已確認是否需要結婚證明書。</span></label></li>
+<li><label for="c51"><input class="chk" type="checkbox" id="c51" data-id="c51"><span>已確認相關費用。</span></label></li>
+<li><label for="c52"><input class="chk" type="checkbox" id="c52" data-id="c52"><span>已確認當日雙方的辦理安排。</span></label></li>
+</ul>
+<h3>最後確認紀錄</h3>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>填寫</th></tr></thead><tbody><tr><td>預計登記日期</td><td>__________</td></tr><tr><td>複核日期</td><td>__________</td></tr><tr><td>複核人</td><td>__________</td></tr><tr><td>文件是否齊全</td><td>□ 是　□ 否</td></tr><tr><td>是否需要再聯絡戶所</td><td>□ 是　□ 否</td></tr><tr><td>未完成事項</td><td>__________</td></tr></tbody></table></div>
+<p class="label">複核原則：</p>
+<p>如有任何項目無法確認，應先向受理戶政事務所詢問，不要單憑本清單推定可以受理。</p>
+<h2 id="s516_4">D. 結婚書約欄位檢查小卡</h2>
+<p>用途：協助檢查結婚書約應載資訊是否有遺漏。不提供法律文件效力保證。</p>
+<h3>應載事項檢查</h3>
+<ul class="check">
+<li><label for="c53"><input class="chk" type="checkbox" id="c53" data-id="c53"><span>雙方當事人資料欄位。</span></label></li>
+<li><label for="c54"><input class="chk" type="checkbox" id="c54" data-id="c54"><span>雙方當事人簽名欄位。</span></label></li>
+<li><label for="c55"><input class="chk" type="checkbox" id="c55" data-id="c55"><span>二人以上證人簽名欄位。</span></label></li>
+<li><label for="c56"><input class="chk" type="checkbox" id="c56" data-id="c56"><span>證人資料欄位。</span></label></li>
+<li><label for="c57"><input class="chk" type="checkbox" id="c57" data-id="c57"><span>結婚書約相關日期欄位。</span></label></li>
+<li><label for="c58"><input class="chk" type="checkbox" id="c58" data-id="c58"><span>其他戶政事務所要求的欄位。</span></label></li>
+<li><label for="c59"><input class="chk" type="checkbox" id="c59" data-id="c59"><span>文件內容沒有明顯空白或錯誤。</span></label></li>
+<li><label for="c60"><input class="chk" type="checkbox" id="c60" data-id="c60"><span>姓名等資料與身分證明文件一致。</span></label></li>
+</ul>
+<h3>證人檢查</h3>
+<ul class="check">
+<li><label for="c61"><input class="chk" type="checkbox" id="c61" data-id="c61"><span>已有至少二名成年（現行年滿 18 歲）且未受監護宣告的證人簽名。</span></label></li>
+<li><label for="c62"><input class="chk" type="checkbox" id="c62" data-id="c62"><span>簽名位置正確。</span></label></li>
+<li><label for="c63"><input class="chk" type="checkbox" id="c63" data-id="c63"><span>簽名沒有遺漏。</span></label></li>
+<li><label for="c64"><input class="chk" type="checkbox" id="c64" data-id="c64"><span>證人資料依戶所要求填寫。</span></label></li>
+<li><label for="c65"><input class="chk" type="checkbox" id="c65" data-id="c65"><span>已確認受理戶政事務所對證人的其他要求。</span></label></li>
+</ul>
+<p class="label">特別提醒：</p>
+<p>民法第982條只規定「二人以上證人之簽名」，沒有寫年齡。書約應有二名以上成年（現行年滿 18 歲）且未受監護宣告的證人簽名（依內政部戶政作業規定；臺北市民政局 FAQ 亦同，資料更新 112-03-24）。部分民間資料仍寫 20 歲，與現行規定不符。</p>
+<h3>文件自我檢查紀錄</h3>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>自行填寫</th></tr></thead><tbody><tr><td>書約版本</td><td>__________</td></tr><tr><td>檢查日期</td><td>__________</td></tr><tr><td>檢查人</td><td>__________</td></tr><tr><td>尚待修正欄位</td><td>__________</td></tr><tr><td>是否已向戶所確認</td><td>□ 是　□ 否</td></tr></tbody></table></div>
+<p>本小卡不是正式結婚書約，也不保證任何書約格式或內容必然符合受理條件。</p>
+<h2 id="s516_5">E. 登記日／假日／熱門日時程尺</h2>
+<h3>工具目的</h3>
+<p>協助使用者依照預約規則，反向安排想要的結婚登記日期。</p>
+<p>這份工具不是預約系統，不會代替使用者取得預約名額，也不代表特定日期一定可以受理。</p>
+<p>熱門日提醒：如 520 等易滿時段僅作提醒，以該戶政事務所公告為準；非法律規定。</p>
+<p>關於「三十日目標日」欄（對應 Excel「時程規劃」）：僅適用國外結婚已生效後之結婚登記——自國外結婚生效日起算 30 日（戶政司 Q06：<a class="url" href="https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html">https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html</a>）。國內結婚請留空本欄；國內結婚於完成結婚登記時生效。</p>
+<h3>第一步：先確定預定登記日期</h3>
+<p class="label">自行填寫：</p>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>填寫</th></tr></thead><tbody><tr><td>預定登記日期</td><td>__________</td></tr><tr><td>希望辦理地點</td><td>__________</td></tr><tr><td>一般辦公日／假日</td><td>__________</td></tr><tr><td>是否為指定登記日</td><td>__________</td></tr><tr><td>是否需要網路預約</td><td>__________</td></tr><tr><td>熱門日提醒（自填）</td><td>示例：週六／520 易滿</td></tr></tbody></table></div>
+<h3>第二步：判斷適用的預約規則</h3>
+<div class="table-wrap"><table><thead><tr><th>類型</th><th>規則（查閱日 2026-11-09）</th></tr></thead><tbody><tr><td>一般網路預約</td><td>預約日前1日至7日</td></tr><tr><td>一般預約最晚申請時間</td><td>預約日前1日下午3時前</td></tr><tr><td>假日結婚登記預約</td><td>預約日前3日至30日</td></tr><tr><td>假日預約最晚申請時間</td><td>預約日前3日下午3時前</td></tr></tbody></table></div>
+<p>日期計算以行政院人事行政總處公告的辦公日計算。</p>
+<p>實際受理日期及名額，以各戶政事務所公告為準。</p>
+<h3>第三步：由預定日期往前回推</h3>
+<p class="label">操作方法：</p>
+<ol start="1">
+<li>找出預定登記日期。</li>
+<li>確認該日期屬於一般辦公日或假日辦理。</li>
+<li>開啟預約說明頁。</li>
+<li>依適用的預約規則，計算預約開放區間。</li>
+<li>確認最晚申請時間。</li>
+<li>將預約開放時間記入自己的行事曆。</li>
+<li>於入口自行完成預約。</li>
+<li>保存預約結果。</li>
+</ol>
+<h3>第四步：指定登記日的安排</h3>
+<p>依戶政司說明，結婚當事人除於結婚登記當日親自到戶政事務所辦理者外，得於結婚登記日前3個辦公日內指定結婚登記日。</p>
+<p>應另外確認指定登記日與網路預約的適用方式，不要將兩項規則直接視為同一程序。</p>
+<h3>第五步：個人時程記錄</h3>
+<div class="table-wrap"><table><thead><tr><th>工作</th><th>預定日期</th><th>完成</th></tr></thead><tbody><tr><td>確認戶政事務所</td><td>______</td><td>□</td></tr><tr><td>查詢預約規則</td><td>______</td><td>□</td></tr><tr><td>預約開放日</td><td>______</td><td>□</td></tr><tr><td>最晚預約時間</td><td>______</td><td>□</td></tr><tr><td>完成預約</td><td>______</td><td>□</td></tr><tr><td>確認指定登記日</td><td>______</td><td>□</td></tr><tr><td>出發前複核</td><td>______</td><td>□</td></tr><tr><td>實際辦理</td><td>______</td><td>□</td></tr></tbody></table></div>
+<p class="label">主管機關入口：</p>
+<ul class="dot">
+<li>戶政網路預約：<a class="url" href="https://www.ris.gov.tw/app/portal/671">https://www.ris.gov.tw/app/portal/671</a></li>
+<li>網路預約說明：<a class="url" href="https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain">https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain</a></li>
+</ul>
+<h2 id="s516_6">F. 婚後多機關變更追蹤—使用說明</h2>
+<h3>工具目的</h3>
+<p>結婚登記完成後，可能還有多個機關及民間機構需要更新資料。</p>
+<p>本工具將常見項目集中管理，避免只完成戶籍資料更新，卻忽略其他資料。對應 Excel「機關變更」工作表。</p>
+<h3>建議使用方式</h3>
+<h4>1. 先建立變更清單</h4>
+<p class="label">依實際情況檢查：</p>
+<ul class="dot">
+<li>戶政資料</li>
+<li>身分證明文件</li>
+<li>健保</li>
+<li>勞保</li>
+<li>所得稅</li>
+<li>銀行帳戶</li>
+<li>信用卡</li>
+<li>保險（姓名、聯絡資料；不含受益人建議）</li>
+<li>證券帳戶</li>
+<li>電信</li>
+<li>水電瓦斯</li>
+<li>房屋相關資料（聯絡、帳單資料）</li>
+<li>汽機車相關資料</li>
+<li>雇主人事資料</li>
+<li>其他會員資料</li>
+</ul>
+<h4>2. 判斷是否需要處理</h4>
+<p class="label">每個項目可設定：</p>
+<ul class="dot">
+<li>不適用</li>
+<li>尚未確認</li>
+<li>待辦</li>
+<li>已聯絡</li>
+<li>已送件</li>
+<li>已完成</li>
+</ul>
+<p>以上是工具內部的管理狀態，不代表機關正式案件狀態。</p>
+<h4>3. 記錄聯絡資訊</h4>
+<p>每次與機關或業者聯絡，可記錄：</p>
+<ul class="dot">
+<li>聯絡日期</li>
+<li>聯絡單位</li>
+<li>聯絡方式</li>
+<li>承辦單位提供的說明</li>
+<li>應備資料</li>
+<li>後續處理事項</li>
+<li>自行設定的追蹤日期</li>
+</ul>
+<h4>4. 完成後留存紀錄</h4>
+<p class="label">建議保留：</p>
+<ul class="dot">
+<li>申請或送件紀錄</li>
+<li>完成通知</li>
+<li>資料更新確認</li>
+<li>相關收據或證明</li>
+</ul>
+<p>是否需要留存、保存方式及期限，依各機關或業者規定。</p>
+<h3>追蹤原則</h3>
+<p>不要假設戶籍資料更新後，所有機關都會自動同步。</p>
+<p>每個項目應以實際受理單位回覆為準。</p>
+<h2 id="s516_7">G. 冠姓後換證追蹤—使用說明</h2>
+<h3>工具目的</h3>
+<p>若婚後選擇冠姓，可能需要逐一確認其他機關及民間機構所保存的姓名資料。</p>
+<p>本工具將姓名變更拆成多個可追蹤項目；可於 Excel「機關變更」表以變更類型篩選姓名相關列。</p>
+<h3>第一步：確認戶籍姓名</h3>
+<ul class="check">
+<li><label for="c66"><input class="chk" type="checkbox" id="c66" data-id="c66"><span>已確認戶籍姓名。</span></label></li>
+<li><label for="c67"><input class="chk" type="checkbox" id="c67" data-id="c67"><span>已確認身分證資料。</span></label></li>
+<li><label for="c68"><input class="chk" type="checkbox" id="c68" data-id="c68"><span>已確認戶口名簿資料。</span></label></li>
+<li><label for="c69"><input class="chk" type="checkbox" id="c69" data-id="c69"><span>已確認是否需要其他戶籍證明。</span></label></li>
+</ul>
+<h3>第二步：建立換證與資料異動清單</h3>
+<div class="table-wrap"><table><thead><tr><th>分類</th><th>檢查項目</th></tr></thead><tbody><tr><td>身分證明</td><td>國民身分證</td></tr><tr><td>戶籍</td><td>戶口名簿、戶籍謄本</td></tr><tr><td>金融</td><td>銀行帳戶、信用卡</td></tr><tr><td>投資</td><td>證券帳戶</td></tr><tr><td>保險</td><td>保單及投保資料（不含受益人建議）</td></tr><tr><td>工作</td><td>人事、薪資資料</td></tr><tr><td>電信</td><td>門號及帳戶</td></tr><tr><td>公用服務</td><td>水電瓦斯</td></tr><tr><td>交通</td><td>汽機車相關資料</td></tr><tr><td>數位服務</td><td>會員帳號及訂閱資料</td></tr></tbody></table></div>
+<h3>第三步：每項資料獨立確認</h3>
+<p class="label">對每一個機關或業者：</p>
+<ol start="1">
+<li>查詢姓名異動規定。</li>
+<li>確認是否需要本人辦理。</li>
+<li>確認應備文件。</li>
+<li>確認是否需要正本。</li>
+<li>確認是否有相關費用。</li>
+<li>完成後確認系統資料。</li>
+</ol>
+<h3>第四步：避免重複作業</h3>
+<p class="label">建議在追蹤表記錄：</p>
+<ul class="dot">
+<li>原資料名稱。</li>
+<li>新資料名稱。</li>
+<li>需要變更的機構。</li>
+<li>是否已提出申請。</li>
+<li>是否已確認更新完成。</li>
+</ul>
+<p><strong>注意：</strong> 本工具不保證各機關資料同步，也不提供個別機構的特定換證規定。</p>
+<h2 id="s516_8">H. 空白涉外文件進度表—使用說明</h2>
+<h3>工具目的</h3>
+<p>提供涉及外國文件的使用者，自行記錄文件準備、驗證及使用進度。對應 Excel「涉外文件」工作表。</p>
+<p>不判斷特定國家文件是否符合要求，也不保證文件效期。</p>
+<h3>建議欄位</h3>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>自行填寫</th></tr></thead><tbody><tr><td>文件名稱</td><td>__________</td></tr><tr><td>文件來源</td><td>__________</td></tr><tr><td>核發機關</td><td>__________</td></tr><tr><td>文件核發日期</td><td>__________</td></tr><tr><td>前置驗證需求</td><td>__________</td></tr><tr><td>前置驗證辦理單位</td><td>__________</td></tr><tr><td>前置驗證日期</td><td>__________</td></tr><tr><td>駐外館處聯絡紀錄</td><td>__________</td></tr><tr><td>文件驗證日期</td><td>__________</td></tr><tr><td>預計使用機關</td><td>__________</td></tr><tr><td>使用機關確認事項</td><td>__________</td></tr><tr><td>尚待處理事項</td><td>__________</td></tr></tbody></table></div>
+<h3>使用步驟</h3>
+<ol start="1">
+<li>先列出需要使用的文件。</li>
+<li>確認文件核發機關。</li>
+<li>向使用機關確認文件要求。</li>
+<li>查詢領事事務局說明。</li>
+<li>確認是否需要核發國前置驗證。</li>
+<li>記錄辦理進度。</li>
+<li>記錄文件驗證完成日期。</li>
+<li>向實際使用機關確認文件是否仍符合其要求。</li>
+</ol>
+<h3>特別提醒</h3>
+<ul class="dot">
+<li>各國文件驗證方式不同。</li>
+<li>應先確認核發國前置驗證要求。</li>
+<li>驗證後的效期由使用文件的單位決定，請先向需用單位（如戶政事務所、移民署）詢問。領事局 FAQ：「文件經驗證後之效期限制，由文件使用單位決定。建議申請人先向文件需用單位詢明。」（<a class="url" href="https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html">https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html</a>）。</li>
+<li>本表沒有自動效期計算功能。</li>
+<li>不保證文件可以在特定日期使用。</li>
+</ul>
+<p class="label">主管機關資料：</p>
+<ul class="dot">
+<li>領事局文件證明入口：<a class="url" href="https://www.boca.gov.tw/np-4-1.html">https://www.boca.gov.tw/np-4-1.html</a></li>
+<li>國外文件驗證說明：<a class="url" href="https://www.boca.gov.tw/cp-43-334-ef805-1.html">https://www.boca.gov.tw/cp-43-334-ef805-1.html</a></li>
+</ul>
+<h2 id="s516_9">I. 行政變更通知信範本二則</h2>
+<p>以下範本僅供行政資料變更使用，不涉及法律主張、稅務主張或其他個案權利義務。</p>
+<h3>範本一：姓名資料變更通知</h3>
+<p>適用方向：銀行、保險、證券、電信及其他機構的行政資料更新。</p>
+<div class="letter">
+<p>主旨：申請更新個人姓名資料</p>
+<p class="label">您好：</p>
+<p>因個人戶籍姓名資料有所變更，擬向貴單位申請更新相關帳戶及聯絡資料。</p>
+<p>以下提供基本資訊，敬請告知所需文件及辦理方式。</p>
+<ul class="dot">
+<li>原姓名：＿＿＿＿＿＿</li>
+<li>更新後姓名：＿＿＿＿＿＿</li>
+<li>帳戶／會員識別資料：＿＿＿＿＿＿</li>
+<li>聯絡電話：＿＿＿＿＿＿</li>
+<li>電子郵件：＿＿＿＿＿＿</li>
+<li>希望辦理事項：姓名資料更新</li>
+<li>其他說明：＿＿＿＿＿＿</li>
+</ul>
+<p>如需提供其他證明文件或本人辦理，敬請告知相關規定。</p>
+<p>謝謝。</p>
+</div>
+<h3>範本二：地址／電話／帳戶聯絡資料變更通知</h3>
+<p>適用方向：一般行政聯絡資料更新。</p>
+<div class="letter">
+<p>主旨：申請更新聯絡資料</p>
+<p class="label">您好：</p>
+<p>因個人聯絡資料有所調整，擬向貴單位申請更新相關紀錄。</p>
+<p>請協助確認以下資料的變更方式：</p>
+<ul class="dot">
+<li>原聯絡地址：＿＿＿＿＿＿</li>
+<li>更新後地址：＿＿＿＿＿＿</li>
+<li>原聯絡電話：＿＿＿＿＿＿</li>
+<li>更新後電話：＿＿＿＿＿＿</li>
+<li>帳戶／會員識別資料：＿＿＿＿＿＿</li>
+<li>聯絡人姓名：＿＿＿＿＿＿</li>
+<li>其他說明：＿＿＿＿＿＿</li>
+</ul>
+<p>如需填寫指定表格、提供證明文件或採用其他辦理方式，敬請告知。</p>
+<p>謝謝。</p>
+</div>
+<p class="label">使用提醒：</p>
+<ul class="dot">
+<li>寄出前確認收件對象。</li>
+<li>不要將密碼或不必要的敏感資料寫入一般通知信。</li>
+<li>帳號請只填末幾碼，勿填身分證統一編號；身分文件依機構正式管道提供。</li>
+<li>不同機構可能有指定申請表或辦理程序，請以其要求為準。</li>
+</ul>
+<h2 id="s516_10">J. 兩人／家人分工表—使用說明與示例任務列</h2>
+<h3>工具目的</h3>
+<p>讓婚姻登記及婚後行政事項有明確負責人，避免兩人都以為對方已經處理。對應 Excel「分工」工作表。</p>
+<p>可依需要由兩人共同使用，也可加入家人協助的工作項目。</p>
+<h3>建議分工原則</h3>
+<ol start="1">
+<li>每個任務指定一位主要負責人。</li>
+<li>重要文件由另一人協助複核。</li>
+<li>需要本人辦理的事項，先確認本人是否能配合。</li>
+<li>由負責人記錄進度。</li>
+<li>已完成事項留下必要紀錄。</li>
+</ol>
+<h3>示例任務列</h3>
+<div class="table-wrap"><table class="wide"><thead><tr><th>任務</th><th>主要負責人</th><th>協助者</th><th>完成狀態</th></tr></thead><tbody><tr><td>查詢戶政登記規則</td><td>甲</td><td>乙</td><td>待辦</td></tr><tr><td>確認受理戶政事務所</td><td>乙</td><td>甲</td><td>待辦</td></tr><tr><td>準備結婚書約</td><td>甲</td><td>乙</td><td>待辦</td></tr><tr><td>確認證人簽名</td><td>乙</td><td>甲</td><td>待辦</td></tr><tr><td>核對身分文件</td><td>甲</td><td>乙</td><td>待辦</td></tr><tr><td>完成網路預約</td><td>乙</td><td>甲</td><td>待辦</td></tr><tr><td>登記當日文件複核</td><td>甲</td><td>乙</td><td>待辦</td></tr><tr><td>婚後健保資料確認</td><td>乙</td><td>甲</td><td>待辦</td></tr><tr><td>婚後其他機關資料確認</td><td>甲</td><td>乙</td><td>待辦</td></tr><tr><td>婚後資料更新追蹤</td><td>乙</td><td>甲</td><td>待辦</td></tr></tbody></table></div>
+<p>以上僅為工作分配示例，不代表法定申請人或機關要求。</p>
+<h3>空白分工表</h3>
+<div class="table-wrap"><table class="wide"><thead><tr><th>任務</th><th>負責人</th><th>協助者</th><th>預定完成日</th><th>狀態</th><th>備註</th></tr></thead><tbody><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td><td>__________</td></tr></tbody></table></div>
+<h2 id="s516_11">K. 付費包檔案清單</h2>
+<p>付費版以網頁版 HTML 為主要工具，可離線開啟、可勾選；勾選與備註只存在你開啟它的瀏覽器裡，換裝置或清除瀏覽器資料前，請先匯出備份。另附 PDF、手機尺寸 PDF，以及建議在電腦上設定與使用的 Excel 工作簿。</p>
+<h3>網頁版 HTML：<span style="white-space:nowrap">marriage-checklist-premium-web-v1.2.html</span></h3>
+<p>可離線開啟的網頁工具：可勾選、本機儲存，並可匯出／匯入備份。資料只存在你開啟它的瀏覽器裡。</p>
+<h3>手機 PDF：<span style="white-space:nowrap">marriage-checklist-premium-mobile-v1.2.pdf</span></h3>
+<p>手機尺寸版式，方便在手機上閱讀與核對清單內容。</p>
+<h3>PDF：<span style="white-space:nowrap">結婚登記與婚後行政清單-付費工具包-v1.9.pdf</span></h3>
+<p class="label">包含：</p>
+<ol start="1">
+<li>工具包封面與重要聲明。</li>
+<li>臨櫃前檢查表。</li>
+<li>出發前24小時複核單。</li>
+<li>結婚書約欄位檢查小卡。</li>
+<li>登記日／假日／熱門日時程尺（含熱門日提醒列）。</li>
+<li>婚後多機關變更追蹤使用說明。</li>
+<li>冠姓後換證追蹤—使用說明（併入機關變更篩選）。</li>
+<li>空白涉外文件進度表使用說明。</li>
+<li>行政變更通知信範本二則。</li>
+<li>兩人／家人分工表使用說明與示例。</li>
+</ol>
+<h3>XLSX：tracker-premium.xlsx</h3>
+<p class="label">實際內含以下工作表：</p>
+<div class="table-wrap"><table><thead><tr><th>工作表</th><th>內容</th></tr></thead><tbody><tr><td>使用說明</td><td>工具用途、填寫方式及使用限制</td></tr><tr><td>臨櫃檢查</td><td>文件與登記前確認清單</td></tr><tr><td>時程規劃</td><td>預定日期、預約規則及自行回推紀錄；「三十日目標日」僅供國外結婚已生效後之結婚登記自填（自國外結婚生效日起算）；國內結婚請留空</td></tr><tr><td>機關變更</td><td>多機關行政資料變更追蹤（可篩選姓名變更／冠姓換證）</td></tr><tr><td>涉外文件</td><td>文件核發、驗證及使用紀錄</td></tr><tr><td>分工</td><td>任務、負責人及完成狀態</td></tr><tr><td>連結庫</td><td>主管機關與法規連結與查閱日</td></tr></tbody></table></div>
+<h3>Excel 使用限制</h3>
+<ul class="dot">
+<li>供自行填寫與追蹤。</li>
+<li>不會連線取得機關即時資料。</li>
+<li>不會自動代辦、代預約或送件。</li>
+<li>不包含稅額試算。</li>
+<li>不提供夫妻財產制選擇建議。</li>
+<li>不保證涉外文件效期。驗證後的效期由使用文件的單位決定，請先向需用單位詢問（<a class="url" href="https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html">https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html</a>）。</li>
+<li>不保證特定行政申請結果。</li>
+</ul>
+<p>付費版的價值在於將分散的行政準備工作轉化為可執行、可勾選、可追蹤的工具，而不是提供更多法律結論。</p><h2 id="buy_p">購買須知</h2><p>更新政策：購買後一年內，本商品若有內容更新，可免費下載更新版本。</p><p><strong>退款說明</strong>：本商品「結婚登記與婚後行政清單」為非以有形媒介提供之數位內容，付款後立即提供下載。依《通訊交易解除權合理例外情事適用準則》第 2 條第 5 款，購買即表示您事先同意於付款後立即提供，並經告知本商品不適用消費者保護法第 19 條第 1 項之七日解除權。檔案無法開啟、損壞或內容與說明不符時，請於購買後 30 日內聯絡我們，我們會修正、補發或退款。本說明不影響您依法享有的其他權利。</p>
+</main>
+<footer class="site-footer"><p>結婚登記與婚後行政清單｜付費工具包｜手機／網頁版式 v1.2（內容對應 A4 v1.9）｜資訊更新日 2026-11-09</p><p>離線自足 HTML；未載入外部字型或追蹤腳本。</p></footer>
+</div>
+<script>
+
+(function () {
+  "use strict";
+  var META = document.documentElement.getAttribute("data-pack") || "unknown";
+  var SCHEMA = 1;
+  var KEY = "marriage-checklist:" + META + ":v1";
+  var ERR_FMT = "備份檔格式不符";
+  var MAX_NOTES = 4000;
+
+  function $(id) { return document.getElementById(id); }
+  function status(msg) {
+    var el = $("tool-status");
+    if (el) el.textContent = msg || "";
+  }
+  function logErr(detail) {
+    try { console.error("[backup]", detail); } catch (e0) {}
+  }
+
+  function collect() {
+    var checks = {};
+    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+      checks[el.getAttribute("data-id")] = !!el.checked;
+    });
+    var notesEl = $("personal-notes");
+    return {
+      schema: SCHEMA,
+      tier: META,
+      pack: META,
+      exportedAt: new Date().toISOString(),
+      checks: checks,
+      notes: notesEl ? notesEl.value : ""
+    };
+  }
+
+  function validate(data) {
+    if (!data || typeof data !== "object" || Array.isArray(data)) {
+      logErr("not object"); throw new Error(ERR_FMT);
+    }
+    if (data.schema !== SCHEMA) {
+      logErr("schema"); throw new Error(ERR_FMT);
+    }
+    if (typeof data.tier !== "string" || data.tier !== META) {
+      logErr("tier"); throw new Error(ERR_FMT);
+    }
+    if (!data.checks || typeof data.checks !== "object" || Array.isArray(data.checks)) {
+      logErr("checks"); throw new Error(ERR_FMT);
+    }
+  }
+
+  function applyData(data) {
+    validate(data);
+    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+      var id = el.getAttribute("data-id");
+      el.checked = !!data.checks[id];
+    });
+    var notesEl = $("personal-notes");
+    if (notesEl) {
+      var n = typeof data.notes === "string" ? data.notes : "";
+      if (n.length > MAX_NOTES) n = n.slice(0, MAX_NOTES);
+      notesEl.value = n;
+    }
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(collect()));
+      status("已自動保存在這個瀏覽器。");
+    } catch (e) {
+      logErr(e);
+      status("無法寫入本機儲存。");
+    }
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      applyData(JSON.parse(raw));
+      status("已載入本機儲存的勾選與備註。");
+    } catch (e) {
+      logErr(e);
+      status("本機儲存無法讀取，請改用匯入備份。");
+    }
+  }
+
+  function exportBackup() {
+    var data = collect();
+    var stamp = new Date();
+    var y = stamp.getFullYear();
+    var m = String(stamp.getMonth() + 1).padStart(2, "0");
+    var d = String(stamp.getDate()).padStart(2, "0");
+    var name = "marriage-checklist-" + META + "-backup-" + y + m + d + ".json";
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      URL.revokeObjectURL(a.href);
+      a.remove();
+    }, 0);
+    status("已匯出：" + name + "。請定期按匯出備份。");
+  }
+
+  function importBackup(file) {
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var data;
+      try {
+        data = JSON.parse(String(reader.result || ""));
+        validate(data);
+      } catch (e) {
+        logErr(e && e.message ? e.message : e);
+        status(ERR_FMT);
+        return;
+      }
+      if (!window.confirm("匯入會覆蓋目前這個瀏覽器裡的勾選與備註。確定繼續？")) {
+        status("已取消匯入。");
+        return;
+      }
+      try {
+        applyData(data);
+        save();
+        status("匯入完成。");
+      } catch (e2) {
+        logErr(e2);
+        status(ERR_FMT);
+      }
+    };
+    reader.onerror = function () {
+      logErr("read error");
+      status(ERR_FMT);
+    };
+    reader.readAsText(file);
+  }
+
+  function wire() {
+    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+      el.addEventListener("change", save);
+    });
+    var notes = $("personal-notes");
+    if (notes) {
+      notes.addEventListener("input", save);
+      notes.addEventListener("change", save);
+    }
+    var btnEx = $("btn-export");
+    var btnIm = $("btn-import");
+    var fileIn = $("import-file");
+    if (btnEx) btnEx.addEventListener("click", exportBackup);
+    if (btnIm && fileIn) {
+      btnIm.addEventListener("click", function () { fileIn.click(); });
+      fileIn.addEventListener("change", function () {
+        var f = fileIn.files && fileIn.files[0];
+        importBackup(f);
+        fileIn.value = "";
+      });
+    }
+    window.addEventListener("storage", function (ev) {
+      if (ev.key === KEY) load();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () { load(); wire(); });
+  } else {
+    load(); wire();
+  }
+})();
+
+</script>
+</body>
+</html>
