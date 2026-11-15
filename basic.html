@@ -134,7 +134,6 @@ a.url { color: #1a5fb4; text-decoration: underline; word-break: break-all; overf
 }
 
 
-/* web-v1.2: interactive checklist + backup */
 ul.check li {
   padding-left: 0; text-indent: 0;
   display: flex; align-items: flex-start; gap: .45rem;
@@ -186,12 +185,313 @@ ul.check input.chk {
 .open-steps ol { margin: 0 0 .7rem; padding-left: 1.25rem; }
 .open-steps li { margin: .3rem 0; }
 
+/* compact first screen + flowchart */
+.cover.slim {
+  padding: .85rem 1.15rem .75rem;
+  margin: 0 -1rem 1rem;
+}
+.cover.slim .deco-top { height: auto; margin: 0 0 .45rem; }
+.cover.slim .deco-bottom, .cover.slim .soft-orb { display: none; }
+.cover.slim .rings { width: 3.4rem; height: 2.1rem; top: .15rem; }
+.cover.slim .tier { font-size: .82rem; letter-spacing: .14em; margin-bottom: .3rem; }
+.cover.slim h1 { font-size: 1.28rem; line-height: 1.28; margin: 0 0 .25rem; }
+.cover.slim .sub { font-size: .92rem; margin: 0 0 .4rem; }
+.cover.slim .rule { margin: 0 0 .45rem; }
+.cover.slim .meta { padding: .45rem .7rem; margin-top: .4rem; }
+.cover.slim .meta p { margin: 0; font-size: .86rem; }
+.top-links {
+  font-size: .9rem;
+  margin: 0 0 .75rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .15rem .7rem;
+}
+.top-links a { color: var(--navy); white-space: nowrap; }
+.cover.slim .meta p { word-break: keep-all; }
+.flow { margin: 0 0 3.5rem; }
+.flow-hint { font-size: .9rem; color: var(--muted); margin: 0 0 .6rem; }
+.flow-step {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+  overflow: hidden;
+}
+.flow-step.optional { border-style: dashed; }
+.flow-step > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .42rem .65rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.flow-step > summary::-webkit-details-marker { display: none; }
+.flow-step > summary::marker { content: ""; }
+.num {
+  flex: 0 0 auto;
+  width: 1.65rem; height: 1.65rem;
+  border-radius: 50%;
+  background: var(--teal); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: .88rem;
+}
+.num.alt { background: #fff; color: var(--teal); border: 1.5px solid var(--teal); font-size: .78rem; }
+.badge {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--warm);
+  letter-spacing: .04em;
+  border: 1px solid var(--warm);
+  border-radius: 999px;
+  padding: .08rem .4rem;
+}
+.card-body {
+  padding: .2rem .85rem .75rem;
+  border-top: 1px solid var(--line);
+  font-size: .95rem;
+}
+.card-body p { margin: .35rem 0; }
+.card-body ul.check { margin: .45rem 0 0; }
+.flow-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: .95rem;
+  margin: .08rem 0;
+}
+.flow-optional { margin-top: .55rem; }
+.appendix-title {
+  font-size: 1.2rem; color: var(--navy); border-bottom: 2px solid var(--teal);
+  padding-bottom: .35rem; margin: 1.5rem 0 .5rem;
+}
+.appendix-lead { font-size: .92rem; color: var(--muted); margin: 0 0 .7rem; }
+.appendix-item {
+  background: #fff;
+  border: 1px solid #e5e0da;
+  border-radius: .6rem;
+  margin: 0 0 .5rem;
+  padding: 0;
+}
+.appendix-item > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: .55rem .8rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: .95rem;
+  line-height: 1.4;
+}
+.appendix-item > summary::-webkit-details-marker { display: none; }
+.appendix-item > summary::marker { content: ""; }
+.appendix-item > summary::after {
+  content: "＋";
+  float: right;
+  color: var(--teal);
+  font-weight: 700;
+}
+.appendix-item[open] > summary::after { content: "－"; }
+.appendix-body { padding: .1rem .9rem .8rem; border-top: 1px solid #eee; }
+.appendix-body .tool-panel { margin: 0; border: 0; padding: .2rem 0 0; }
+@media (max-width: 430px) {
+  html { font-size: 16px; }
+  .cover.slim { padding: .65rem 1rem .55rem; margin: 0 -1rem .7rem; }
+  .cover.slim .rings, .cover.slim .deco-top { display: none; }
+  .cover.slim h1 { font-size: 1.18rem; }
+  .flow-step > summary { padding: .36rem .55rem; font-size: .98rem; }
+  .flow-arrow { height: .8rem; margin: .04rem 0; }
+  .num { width: 1.5rem; height: 1.5rem; font-size: .8rem; }
+}
+@media (max-width: 360px) {
+  html { font-size: 16px; }
+  .cover.slim h1 { font-size: 1.12rem; }
+}
+.flow-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .3rem .6rem;
+  margin: 0 0 .55rem;
+}
+.flow-toolbar .flow-hint { margin: 0; }
+.flow-toolbar-btns { display: flex; gap: .4rem; }
+.flow-toolbar button {
+  font: inherit;
+  font-size: .85rem;
+  padding: .25rem .7rem;
+  min-height: 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--teal);
+  background: #fff;
+  color: var(--teal);
+  cursor: pointer;
+}
+.flow-toolbar button:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.flow-step > summary { min-height: 44px; box-sizing: border-box; }
+.flow-step > summary::after {
+  content: "＋";
+  margin-left: .4rem;
+  flex: 0 0 auto;
+  color: var(--teal);
+  font-weight: 700;
+}
+.flow-step[open] > summary::after { content: "－"; }
+.flow-step:not(.optional) > summary::after { margin-left: auto; }
+.flow-branch {
+  margin: .3rem 0 .3rem 1.1rem;
+  padding-left: .6rem;
+  border-left: 2px dashed var(--line);
+}
+.flow-branch-label {
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0 0 .25rem;
+}
+.appendix-a {
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 .35rem;
+}
+@media (max-width: 430px) {
+  .cover.slim { padding: .5rem .9rem .4rem; margin-bottom: .45rem; }
+  .cover.slim .sub { font-size: .86rem; margin-bottom: .3rem; }
+  .cover.slim .meta { padding: .25rem .6rem; margin-top: .25rem; }
+  .top-links { margin-bottom: .4rem; }
+  .flow-toolbar { margin-bottom: .3rem; flex-wrap: nowrap; }
+  .flow-toolbar .flow-hint { font-size: .8rem; line-height: 1.35; }
+  .flow-toolbar-btns { flex: 0 0 auto; gap: .3rem; }
+  .flow-toolbar button { font-size: .76rem; padding: .1rem .5rem; min-height: 1.7rem; }
+  .flow-arrow { height: .6rem; margin: 0; }
+  .flow-branch { margin: .15rem 0 .15rem .8rem; }
+  .flow-branch-label { font-size: .76rem; margin-bottom: .1rem; }
+}
+@media print {
+  .flow-toolbar-btns { display: none !important; }
+  details, details[open] { display: block; }
+  details > * { display: block !important; }
+  details > summary { display: block !important; }
+  details::details-content { content-visibility: visible; display: block; }
+  .flow-step > summary::after, .appendix-item > summary::after { content: ""; }
+  .flow-branch { border-left: 0; margin-left: 0; padding-left: 0; }
+}
+
 </style>
 </head>
 <body>
 <div class="wrap">
-<section class="cover"><div class="deco-top"><div class="gold-line"></div><div class="gold-line thin"></div><svg class="rings" viewBox="0 0 90 55" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="28" r="16" fill="none" stroke="#C4A574" stroke-width="2"/><circle cx="58" cy="28" r="16" fill="none" stroke="#B8796A" stroke-width="2"/></svg></div><div class="soft-orb orb-a"></div><div class="soft-orb orb-b"></div><div class="soft-orb orb-c"></div><div class="deco-bottom"><div class="gold-line thin"></div><div class="gold-line"></div></div><div class="tier">基礎版</div><h1>結婚登記與婚後行政清單</h1><p class="sub">從結婚書約、戶政登記到婚後行政變更</p><div class="rule"></div><p>給即將結婚與剛完成結婚登記的台灣民眾，一份容易查閱、方便執行的行政流程整理。</p><div class="meta"><ul><li>資訊更新日：2026-11-09</li><li>版本：v1.8</li><li>適用範圍：中華民國（台灣）一般婚姻登記及婚後常見行政事項</li></ul><p>查閱日提示： 本指南整理法規與政府公開資訊。各機關規定、受理方式、預約名額及規費可能變動。實際辦理前，請依各連結所列資訊重新確認。</p></div><p class="edition-note">手機／網頁版式 v1.2（內容對應 A4 v1.8）</p></section>
-<section class="toc"><h1 class="toc-title">目錄</h1><ul><li><a href="#s22_1">2. 重要聲明</a></li><li><a href="#s22_2">3. 使用方式</a></li><li><a href="#s22_3">4. 結婚何時生效（民法 §982）</a></li><li><a href="#s22_4">5. 誰可以辦、是否親自（戶籍法 §33、§47）</a></li><li><a href="#s22_5">6. 結婚年齡（民法 §980）</a></li><li><a href="#s22_6">7. 禁婚親中性摘要（民法 §983）</a></li><li><a href="#s22_7">8. 應備文件與費用摘要</a></li><li><a href="#s22_8">9. 登記生效、三十日申請期限與罰鍰（民法 §982；戶籍法 §48、§79）</a></li><li><a href="#s22_9">10. 網路預約與假日登記時程</a></li><li><a href="#s22_10">11. 指定登記日摘要</a></li><li><a href="#s22_11">12. 同性婚姻登記索引</a></li><li><a href="#s22_12">13. 冠姓（姓名條例 §8；民法 §1000）</a></li><li><a href="#s22_13">14. 夫妻財產制中性介紹（民法 §1004、§1005）</a></li><li><a href="#s22_14">15. 報稅事實與主管機關連結</a></li><li><a href="#s22_15">16. 健保與勞保差異</a></li><li><a href="#s22_16">17. 婚後常見變更索引</a></li><li><a href="#s22_17">18. 涉外婚姻通用索引</a></li><li><a href="#s22_18">19. 常見誤區</a></li><li><a href="#s22_19">20. 主管機關與法規連結總表</a></li><li><a href="#s22_20">21. 版本與自行核對提醒</a></li><li><a href="#buy_b">購買須知</a></li><li><a href="#backup">本機備註與備份</a></li><li><a href="#open-howto">如何開啟（電腦／手機）</a></li></ul></section>
+<section class="cover slim"><div class="deco-top"><div class="gold-line"></div><svg class="rings" viewBox="0 0 90 55" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="28" r="16" fill="none" stroke="#C4A574" stroke-width="2"/><circle cx="58" cy="28" r="16" fill="none" stroke="#B8796A" stroke-width="2"/></svg></div><div class="tier">基礎版</div><h1>結婚登記與婚後行政清單</h1><p class="sub">從結婚書約、戶政登記到婚後行政變更，依步驟進行</p><div class="rule"></div><div class="meta"><p>資訊更新日：2026-11-09</p><p>手機／網頁版式 v1.7（內容對應 A4 v1.8）</p></div></section>
+<p class="top-links"><a href="#s22_1">使用前請先看重要聲明</a><a href="#buy_b">購買須知</a><a href="#backup">備註與備份</a></p>
+<section class="flow" id="flow" aria-label="結婚登記七步驟">
+<div class="flow-toolbar">
+<p class="flow-hint">點選步驟，查看做什麼、帶什麼、去哪辦。</p>
+<div class="flow-toolbar-btns">
+<button type="button" id="btn-expand-all">展開全部</button>
+<button type="button" id="btn-collapse-all">收合全部</button>
+</div>
+</div>
+<details class="flow-step" id="step-1">
+<summary><span class="num">1</span><span class="step-title">預約登記</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>先確認受理戶政事務所，再依該所是否提供網路預約或假日登記，於開放區間完成預約並保存預約資訊。一般網路預約為預約日前1日至7日（日前1日下午3時前）；假日結婚登記為預約日前3日至30日（日前3日下午3時前）；以辦公日計算。無法在登記當日親自到戶政事務所的人，可在結婚登記日前3個辦公日內，先向戶政事務所辦理並指定結婚登記日；指定的日子不限於辦公日。這和網路預約不是同一程序。</p>
+<p><strong>帶什麼：</strong>預約通常不另列應備文件；應備文件見步驟②。</p>
+<p><strong>去哪辦：</strong>戶政網路預約入口，或依該戶政事務所公告（連結見附錄）。</p>
+</div>
+</details>
+
+<div class="flow-optional flow-branch">
+<p class="flow-branch-label"><span aria-hidden="true">↳ </span>登記前（選擇性）</p>
+<details class="flow-step optional" id="step-x">
+<summary><span class="num alt">選</span><span class="step-title">涉外婚姻</span><span class="badge">選擇性</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>涉外婚姻可能涉及國籍、文件驗證及身分登記等不同規定。在國外依當地法已生效的結婚，自國外結婚生效日起算30日內申請登記；逾期申請戶政事務所仍應受理，罰鍰規定見附錄「9. 登記生效、三十日申請期限與罰鍰」。</p>
+<p><strong>帶什麼：</strong>國外文件向我駐外館處申請驗證前，應先完成核發國的前置驗證；各國方式不同，請先洽擬申請的我駐外館處。驗證後的效期由使用文件的單位決定。</p>
+<p><strong>去哪辦：</strong>戶政事務所；文件驗證見領事事務局；外籍或大陸配偶見移民署（連結見附錄）。</p>
+</div>
+</details>
+</div>
+
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-2">
+<summary><span class="num">2</span><span class="step-title">備齊文件</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>依受理戶政事務所的最新公告確認文件。</p>
+<p><strong>帶什麼：</strong>雙方身分證明、戶口名簿（是否須提出依戶所公告）、結婚書約正本（應有二名以上成年（現行年滿 18 歲）且未受監護宣告的證人簽名）。需換領身分證的人，每人備最近2年內拍攝的符合規格彩色相片1張，或事先上傳數位相片；相片影像建檔日期在2年內、經戶政事務所核對人貌相符者，得免繳交。</p>
+<p><strong>去哪辦：</strong>向受理戶政事務所確認。</p>
+</div>
+</details>
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-3">
+<summary><span class="num">3</span><span class="step-title">戶政臨櫃登記</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>雙方當事人向戶政機關辦理結婚登記；國內結婚於完成結婚登記時生效。結婚登記原則上須由雙方當事人親自辦理；有正當理由並經戶政事務所核准，才可以書面委託他人。</p>
+<p><strong>帶什麼：</strong>見步驟②。規費依各戶所公告，摘要見附錄。</p>
+<p><strong>去哪辦：</strong>受理戶政事務所。</p>
+</div>
+</details>
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-4">
+<summary><span class="num">4</span><span class="step-title">換領身分證</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>結婚登記使國民身分證記載事項變更時，應同時申請換領國民身分證（戶籍法第58條）；相片見②。沒有我國國民身分證的一方，改備護照或居留證明文件。冠姓須經夫妻書面約定，並向戶政機關登記（民法第1000條第1項）；回復本姓者，於同一婚姻關係存續中以一次為限（姓名條例第8條）。若選擇冠姓，應另外檢查後續需要更新姓名的資料；不要假設其他機關或民間機構的資料會自動同步。</p>
+<p><strong>帶什麼：</strong>換領身分證應備文件見步驟②；其他機關更新見附錄「17. 婚後常見變更索引」。</p>
+<p><strong>去哪辦：</strong>戶政事務所；其他機構見附錄「17. 婚後常見變更索引」。</p>
+</div>
+</details>
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-5">
+<summary><span class="num">5</span><span class="step-title">健保／勞保</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>健保與勞保應分開理解。全民健康保險之配偶眷屬以「無職業之配偶」等法定要件為準，請向投保單位確認；勞工保險並無「眷屬加保」，不會因為結婚而替配偶辦理勞保眷屬加保。</p>
+<p><strong>帶什麼：</strong>依投保單位要求；確認重點見附錄「16. 健保與勞保差異」。</p>
+<p><strong>去哪辦：</strong>健保向投保單位或健保署確認；勞保向投保單位或勞保局確認（連結見附錄）。</p>
+</div>
+</details>
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-6">
+<summary><span class="num">6</span><span class="step-title">銀行、保險等各機關資料變更</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>完成結婚登記後，依實際情況檢查銀行、保險、證券、電信等行政資料是否需要更新。婚姻登記與其他機關或民間機構的資料更新，不應直接視為同一項作業。</p>
+<p><strong>帶什麼：</strong>依各業者規定；常見項目與洽詢單位見附錄「17. 婚後常見變更索引」。</p>
+<p><strong>去哪辦：</strong>請洽各銀行、保險公司、證券商、電信業者等；清單見附錄。</p>
+</div>
+</details>
+<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 16" width="22" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l6 8 6-8" fill="none" stroke="#2f6f73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><details class="flow-step" id="step-7">
+<summary><span class="num">7</span><span class="step-title">報稅／所得稅</span></summary>
+<div class="card-body">
+<p><strong>做什麼：</strong>年度中結婚者，結婚當年可依財政部台財稅第35934號函，選擇分開或合併申報；結婚當年度以後的其他年度，除夫妻分居得各自申報外，應依所得稅法第15條合併申報。本節不提供稅額試算，也不建議哪一種申報方式較省。</p>
+<p><strong>帶什麼：</strong>依財政部或國稅局說明；制度重點與連結見附錄「15. 報稅事實與主管機關連結」。</p>
+<p><strong>去哪辦：</strong>財政部或國稅局（說明頁見附錄）。</p>
+</div>
+</details>
+
+</section>
+
+<main>
+<h2 class="first" id="s22_1">2. 重要聲明</h2>
+<p>本商品為一般流程整理與待辦工具，僅供參考，不構成法律意見、稅務意見或移民業務，亦不構成個案諮詢或代辦。</p>
+<p>作者不是律師、會計師、記帳士、地政士或移民業務人員，未受委任為您分析案情、計算稅額、填寫或提出任何申請。</p>
+<p>內容以中華民國（台灣）法規與政府公開資訊為範圍；法規、規費、罰鍰與機關作業方式可能變更。</p>
+<p>封面標示「資訊更新日」；各條引用另標「查閱日」。使用前請自行核對全國法規資料庫與各主管機關最新網頁。</p>
+<p>涉外、大陸或港澳相關規定依當事人國籍與身分而異，請以主管機關最新公告為準。</p>
+<p>健保與勞保制度不同：勞工保險並無「眷屬加保」；全民健康保險之配偶眷屬以「無職業之配偶」等法定要件為準，請向投保單位確認。</p>
+<p>個案請洽戶政事務所、主管機關，或執業律師／會計師／依法許可之專業人員。</p>
+<h2 id="about-pack">關於本指南</h2>
+<p>給即將結婚與剛完成結婚登記的台灣民眾，一份容易查閱、方便執行的行政流程整理。</p>
+<ul>
+<li>資訊更新日：2026-11-09</li>
+<li>版本：v1.8</li>
+<li>適用範圍：中華民國（台灣）一般婚姻登記及婚後常見行政事項</li>
+</ul>
+<p>查閱日提示： 本指南整理法規與政府公開資訊。各機關規定、受理方式、預約名額及規費可能變動。實際辦理前，請依各連結所列資訊重新確認。</p>
+<p>本檔為手機／網頁版式 v1.7（內容對應 A4 v1.8）。</p>
+<h2 class="appendix-title" id="appendix">附錄</h2>
+<p class="appendix-a">A. 七步驟小卡（見上方流程圖）</p>
+<p class="appendix-lead">法規摘要、常見誤區、連結總表、備註與備份都在下面，需要時再展開。</p>
+<details class="appendix-item" id="wrap-backup">
+<summary>本機備註與備份／如何開啟（電腦／手機）</summary>
+<div class="appendix-body">
 <section class="tool-panel" id="tool-panel" data-pack="basic">
 <h2 id="backup">本機備註與備份</h2>
 <div class="warn">
@@ -206,7 +506,7 @@ ul.check input.chk {
 <input type="file" id="import-file" accept="application/json,.json">
 </div>
 <p class="tool-status" id="tool-status" role="status" aria-live="polite"></p>
-<p>匯出檔為 JSON，檔名含日期。匯入前會再確認是否覆蓋。備份檔含你填的備註，請自行妥善保存。</p>
+<p>匯出檔為 JSON，檔名含日期與時間。匯入前會再確認是否覆蓋。備份檔含你填的備註，請自行妥善保存。</p>
 
 <h2 id="open-howto">如何開啟（電腦／手機）</h2>
 <div class="open-steps">
@@ -231,17 +531,20 @@ ul.check input.chk {
 <p>Excel 追蹤表建議在電腦上設定與使用；手機端主要用來查看。</p>
 </div>
 </section>
-<main>
-<h2 class="first" id="s22_1">2. 重要聲明</h2>
-<p>本商品為一般流程整理與待辦工具，僅供參考，不構成法律意見、稅務意見或移民業務，亦不構成個案諮詢或代辦。</p>
-<p>作者不是律師、會計師、記帳士、地政士或移民業務人員，未受委任為您分析案情、計算稅額、填寫或提出任何申請。</p>
-<p>內容以中華民國（台灣）法規與政府公開資訊為範圍；法規、規費、罰鍰與機關作業方式可能變更。</p>
-<p>封面標示「資訊更新日」；各條引用另標「查閱日」。使用前請自行核對全國法規資料庫與各主管機關最新網頁。</p>
-<p>涉外、大陸或港澳相關規定依當事人國籍與身分而異，請以主管機關最新公告為準。</p>
-<p>健保與勞保制度不同：勞工保險並無「眷屬加保」；全民健康保險之配偶眷屬以「無職業之配偶」等法定要件為準，請向投保單位確認。</p>
-<p>個案請洽戶政事務所、主管機關，或執業律師／會計師／依法許可之專業人員。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_2">
+<summary>3. 使用方式</summary>
+<div class="appendix-body">
 <h2 id="s22_2">3. 使用方式</h2>
 <p>本指南依照結婚登記前、登記當日及婚後行政變更的順序編排。建議先閱讀結婚登記的基本規定，再使用文件準備清單確認資料，接著依預定登記日期安排預約及辦理時間。完成登記後，再逐項檢視姓名、健保、報稅及其他行政資料是否需要更新。各項目是否適用，仍應依個人實際情況向主管機關確認。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_3">
+<summary>4. 結婚何時生效（民法 §982）</summary>
+<div class="appendix-body">
 <h2 id="s22_3">4. 結婚何時生效（民法 §982）</h2>
 <p>台灣現行結婚制度採登記制。</p>
 <p class="label">依民法第982條：</p>
@@ -258,6 +561,12 @@ ul.check input.chk {
 <p class="label">法規原文：</p>
 <p>民法第982條－全國法規資料庫：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=982&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=982&amp;pcode=B0000001</a></p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_4">
+<summary>5. 誰可以辦、是否親自（戶籍法 §33、§47）</summary>
+<div class="appendix-body">
 <h2 id="s22_4">5. 誰可以辦、是否親自（戶籍法 §33、§47）</h2>
 <h3>誰是申請人？</h3>
 <p>依戶籍法第33條，結婚登記以雙方當事人為申請人。</p>
@@ -277,6 +586,12 @@ ul.check input.chk {
 <li>戶籍法第47條：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=47&amp;pcode=D0030006">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=47&amp;pcode=D0030006</a></li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_5">
+<summary>6. 結婚年齡（民法 §980）</summary>
+<div class="appendix-body">
 <h2 id="s22_5">6. 結婚年齡（民法 §980）</h2>
 <p class="label">依民法第980條：</p>
 <p>男女未滿十八歲者，不得結婚。</p>
@@ -290,6 +605,12 @@ ul.check input.chk {
 <p class="label">法規原文：</p>
 <p>民法第980條－全國法規資料庫：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=980&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=980&amp;pcode=B0000001</a></p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_6">
+<summary>7. 禁婚親中性摘要（民法 §983）</summary>
+<div class="appendix-body">
 <h2 id="s22_6">7. 禁婚親中性摘要（民法 §983）</h2>
 <p>民法第983條對特定親屬關係設有禁止結婚的規定。</p>
 <p class="label">主要範圍包括：</p>
@@ -305,13 +626,19 @@ ul.check input.chk {
 <p class="label">法規原文：</p>
 <p>民法第983條－全國法規資料庫：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=983&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=983&amp;pcode=B0000001</a></p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_7">
+<summary>8. 應備文件與費用摘要</summary>
+<div class="appendix-body">
 <h2 id="s22_7">8. 應備文件與費用摘要</h2>
 <h3>文件準備方向</h3>
 <p>辦理前應依受理戶政事務所的最新公告確認文件。</p>
-<div class="table-wrap"><table><thead><tr><th>項目</th><th>準備方向</th></tr></thead><tbody><tr><td>雙方身分證明</td><td>依戶政事務所公告準備</td></tr><tr><td>戶口名簿</td><td>是否須提出及相關要求，依戶所公告</td></tr><tr><td>結婚書約（結婚證明文件；依施行細則第13條應提出正本）</td><td>應有二名以上成年（現行年滿 18 歲）且未受監護宣告的證人簽名；申請時提出正本（97年5月22日以前結婚等例外見原文）</td></tr><tr><td>照片</td><td>備妥最近二年內拍攝、符合規格的彩色相片 1 張，或事先上傳數位相片；戶政事務所已存檔未滿二年且人貌相符的相片，得免繳交（依戶政事務所認定）。（戶政司結婚登記：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a>；《國民身分證及戶口名簿格式內容製發相片影像檔建置管理辦法》§18：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030</a>）</td></tr><tr><td>其他補充文件</td><td>依個別登記情形及戶所要求</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>準備方向</th></tr></thead><tbody><tr><td>雙方身分證明</td><td>依戶政事務所公告準備</td></tr><tr><td>戶口名簿</td><td>是否須提出及相關要求，依戶所公告</td></tr><tr><td>結婚書約（結婚證明文件；依施行細則第13條應提出正本）</td><td>應有二名以上成年（現行年滿 18 歲）且未受監護宣告的證人簽名；申請時提出正本（97年5月22日以前結婚等例外見原文）</td></tr><tr><td>照片</td><td>需換領身分證的人，每人備最近2年內拍攝的符合規格彩色相片1張，或事先上傳數位相片；相片影像建檔日期在2年內、經戶政事務所核對人貌相符者，得免繳交。（戶政司結婚登記：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a>；《國民身分證及戶口名簿格式內容製發相片影像檔建置管理辦法》§18：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030</a>）</td></tr><tr><td>其他補充文件</td><td>依個別登記情形及戶所要求</td></tr></tbody></table></div>
 <p>註：民法 §982 只規定「二人以上證人之簽名」，未寫年齡。證人年齡依內政部戶政作業規定（臺北市民政局 FAQ 亦同，資料更新 112-03-24）；部分民間資料仍寫 20 歲，與現行規定不符。</p>
 <p>依戶籍法施行細則第13條，結婚登記申請時應提出證明文件正本；97年5月22日以前結婚等例外，依原文規定辦理。</p>
-<p><strong>證件照提醒：</strong> 備妥最近二年內拍攝、符合規格的彩色相片 1 張，或事先上傳數位相片；戶政事務所已存檔未滿二年且人貌相符的相片，得免繳交（依戶政事務所認定）。（參戶政司結婚登記說明：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a>；《國民身分證及戶口名簿格式內容製發相片影像檔建置管理辦法》§18：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030</a>）</p>
+<p><strong>證件照提醒：</strong> 需換領身分證的人，每人備最近2年內拍攝的符合規格彩色相片1張，或事先上傳數位相片；相片影像建檔日期在2年內、經戶政事務所核對人貌相符者，得免繳交。（參戶政司結婚登記說明：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a>；《國民身分證及戶口名簿格式內容製發相片影像檔建置管理辦法》§18：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030</a>）</p>
 <h3>費用摘要</h3>
 <p>以下為政府公開費用資訊摘要，實際應依各戶政事務所公告及申請項目確認。</p>
 <div class="table-wrap"><table><thead><tr><th>項目</th><th>費用</th></tr></thead><tbody><tr><td>換發國民身分證工本費</td><td>NT$50／張</td></tr><tr><td>戶口名簿規費</td><td>NT$30／份</td></tr><tr><td>結婚證明書規費</td><td>NT$100／張</td></tr></tbody></table></div>
@@ -319,6 +646,12 @@ ul.check input.chk {
 <p class="label">法規參考：</p>
 <p>戶籍法施行細則第13條：<a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=13&amp;pcode=D0030007">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=13&amp;pcode=D0030007</a></p>
 <p>戶政司結婚登記說明：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a></p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_8">
+<summary>9. 登記生效、三十日申請期限與罰鍰（民法 §982；戶籍法 §48、§79）</summary>
+<div class="appendix-body">
 <h2 id="s22_8">9. 登記生效、三十日申請期限與罰鍰（民法 §982；戶籍法 §48、§79）</h2>
 <h3>國內結婚（登記制）</h3>
 <p>依民法第982條，結婚應以書面為之，有二人以上證人簽名，並由雙方當事人向戶政機關辦理結婚登記；國內結婚於完成結婚登記時生效。</p>
@@ -348,6 +681,12 @@ ul.check input.chk {
 <li>戶政司 Q06（國外結婚生效日）：<a class="url" href="https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html">https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html</a></li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_9">
+<summary>10. 網路預約與假日登記時程</summary>
+<div class="appendix-body">
 <h2 id="s22_9">10. 網路預約與假日登記時程</h2>
 <p>戶政司提供網路預約戶政登記服務；各戶所開放情形以其公告為準。</p>
 <p>依查閱日2026-11-09的預約說明：</p>
@@ -381,6 +720,12 @@ ul.check input.chk {
 <li>網路預約說明：<a class="url" href="https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain">https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain</a></li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_10">
+<summary>11. 指定登記日摘要</summary>
+<div class="appendix-body">
 <h2 id="s22_10">11. 指定登記日摘要</h2>
 <p>除了於結婚登記當日親自前往戶政事務所辦理外，結婚當事人得於結婚登記日前3個辦公日內指定結婚登記日。</p>
 <p>這項安排可讓結婚當事人依照預定日期安排登記。</p>
@@ -396,6 +741,12 @@ ul.check input.chk {
 <p class="label">主管機關說明：</p>
 <p>戶政司結婚登記：<a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a></p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_11">
+<summary>12. 同性婚姻登記索引</summary>
+<div class="appendix-body">
 <h2 id="s22_11">12. 同性婚姻登記索引</h2>
 <p>台灣同性婚姻相關規定，另有《司法院釋字第748號解釋施行法》適用。</p>
 <p class="label">依該法第4條（原文）：</p>
@@ -414,6 +765,12 @@ ul.check input.chk {
 <li>移民署兩岸同性伴侶結婚登記流程指引：<a class="url" href="https://www.immigration.gov.tw/5382/5385/7229/7232/417925">https://www.immigration.gov.tw/5382/5385/7229/7232/417925</a> （更新 2026-08-31）</li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_12">
+<summary>13. 冠姓（姓名條例 §8；民法 §1000）</summary>
+<div class="appendix-body">
 <h2 id="s22_12">13. 冠姓（姓名條例 §8；民法 §1000）</h2>
 <h3>姓名條例第8條</h3>
 <p>夫妻之一方得申請以其本姓冠以配偶之姓，或回復其本姓。</p>
@@ -426,6 +783,12 @@ ul.check input.chk {
 <p>民法第1000條請見全國法規資料庫條文（本指南不改寫未完整擷取之第二項）：</p>
 <p><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1000&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1000&amp;pcode=B0000001</a></p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_13">
+<summary>14. 夫妻財產制中性介紹（民法 §1004、§1005）</summary>
+<div class="appendix-body">
 <h2 id="s22_13">14. 夫妻財產制中性介紹（民法 §1004、§1005）</h2>
 <p>夫妻財產制涉及夫妻財產的法律關係。</p>
 <p>本指南僅整理法條基本概念，不建議選擇哪一種制度，也不提供契約範本。</p>
@@ -441,6 +804,12 @@ ul.check input.chk {
 <p class="label">提醒：</p>
 <p>夫妻財產制可能涉及財產歸屬、管理及其他法律效果。若需判斷制度適用或契約內容，應自行查閱完整法規並洽執業律師等適當專業人員。</p>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_14">
+<summary>15. 報稅事實與主管機關連結</summary>
+<div class="appendix-body">
 <h2 id="s22_14">15. 報稅事實與主管機關連結</h2>
 <p>結婚後，夫妻所得稅申報方式涉及所得稅法第15條及財政部相關說明。</p>
 <p>本節只整理制度事實，不提供稅額試算，也不建議哪一種申報方式較省。</p>
@@ -467,6 +836,12 @@ ul.check input.chk {
 <li>財政部：新婚夫妻申報說明：<a class="url" href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=699b17dc8a3a41a697fa0be1216c7829">https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=699b17dc8a3a41a697fa0be1216c7829</a></li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_15">
+<summary>16. 健保與勞保差異</summary>
+<div class="appendix-body">
 <h2 id="s22_15">16. 健保與勞保差異</h2>
 <p>結婚後，健保與勞保應分開理解。</p>
 <p>兩種制度的投保對象與眷屬規定並不相同。</p>
@@ -502,6 +877,12 @@ ul.check input.chk {
 <li>勞保資料變更：<a class="url" href="https://www.bli.gov.tw/0005470.html">https://www.bli.gov.tw/0005470.html</a></li>
 </ul>
 <p>查閱日：2026-11-09</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_16">
+<summary>17. 婚後常見變更索引</summary>
+<div class="appendix-body">
 <h2 id="s22_16">17. 婚後常見變更索引</h2>
 <p>完成結婚登記後，可依實際情況檢查以下行政事項。</p>
 <p>以下為清單級索引，不代表每一項都必須變更。</p>
@@ -511,6 +892,12 @@ ul.check input.chk {
 <p>各機關資料是否同步、是否需要另行申請，請逐一確認。</p>
 <p>姓名變更後，可參考地方戶政機關整理的換證資訊（僅作常見項目參考，非全國統一清單）：</p>
 <p>臺南市永康戶政｜改名、改身分證號更換證件一覽表：<a class="url" href="https://yungkang-house.tainan.gov.tw/cp.aspx?n=10310">https://yungkang-house.tainan.gov.tw/cp.aspx?n=10310</a>（刊登 107-01-19；更新 113-05-06；查閱日 2026-11-09）。屬地方戶所參考，<strong>各戶所規定可能不同</strong>。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_17">
+<summary>18. 涉外婚姻通用索引</summary>
+<div class="appendix-body">
 <h2 id="s22_17">18. 涉外婚姻通用索引</h2>
 <p>涉外婚姻可能涉及當事人國籍、婚姻成立方式、文件驗證及身分登記等不同規定。</p>
 <p>本節僅提供主管機關資訊索引，不提供個案判斷或代辦流程。</p>
@@ -543,6 +930,12 @@ ul.check input.chk {
 <h3>兩岸同性伴侶</h3>
 <p>移民署兩岸同性伴侶結婚登記流程指引：<a class="url" href="https://www.immigration.gov.tw/5382/5385/7229/7232/417925">https://www.immigration.gov.tw/5382/5385/7229/7232/417925</a></p>
 <p>移民署指引更新日：2026-08-31；本節查閱日：2026-11-09。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_18">
+<summary>19. 常見誤區</summary>
+<div class="appendix-body">
 <h2 id="s22_18">19. 常見誤區</h2>
 <h3>誤區一：辦過婚宴就算完成結婚登記</h3>
 <p>婚宴及婚禮儀式不等於戶政機關結婚登記。應依民法第982條完成法定程序；完成登記後婚姻才生效。</p>
@@ -574,9 +967,21 @@ ul.check input.chk {
 <p>民間婚禮／登記懶人包可能過時（例如仍寫證人年滿 20 歲）。證人依內政部戶政作業規定（臺北市民政局 FAQ 亦同）：二名以上成年（現行年滿 18 歲）且未受監護宣告；並以全國法規資料庫與受理戶政事務所說明為準。</p>
 <h3>誤區十五：預約只要在「前一天」完成即可，不必管截止時點</h3>
 <p>依戶政司預約說明（查閱日 2026-11-09），一般網路預約為預約日前1日（<strong>下午3時前</strong>）至7日；假日結婚登記為預約日前3日下午3時前至30日。漏掉「下午3時前」可能錯過預約。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_19">
+<summary>20. 主管機關與法規連結總表</summary>
+<div class="appendix-body">
 <h2 class="newpage" id="s22_19">20. 主管機關與法規連結總表</h2>
 <p>以下僅列本指南使用的連結。查閱日皆為 2026-11-09。</p>
 <div class="table-wrap"><table class="wide"><thead><tr><th>項目</th><th>URL</th><th>查閱日</th><th>備註</th></tr></thead><tbody><tr><td>戶政司結婚登記</td><td><a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/383.html">https://www.ris.gov.tw/documents/html/2/3/1/383.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>網路預約入口</td><td><a class="url" href="https://www.ris.gov.tw/app/portal/671">https://www.ris.gov.tw/app/portal/671</a></td><td>2026-11-09</td><td></td></tr><tr><td>預約說明</td><td><a class="url" href="https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain">https://www.ris.gov.tw/apply-reservation/app/aw071401/applyMain</a></td><td>2026-11-09</td><td></td></tr><tr><td>同性結婚登記</td><td><a class="url" href="https://www.ris.gov.tw/documents/html/2/3/1/401.html">https://www.ris.gov.tw/documents/html/2/3/1/401.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法980</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=980&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=980&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法982</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=982&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=982&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法983</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=983&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=983&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法1000</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1000&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1000&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法1004</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1004&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1004&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>民法1005</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1005&amp;pcode=B0000001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=1005&amp;pcode=B0000001</a></td><td>2026-11-09</td><td></td></tr><tr><td>戶籍法33</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=33&amp;pcode=D0030006">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=33&amp;pcode=D0030006</a></td><td>2026-11-09</td><td></td></tr><tr><td>戶籍法47</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=47&amp;pcode=D0030006">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=47&amp;pcode=D0030006</a></td><td>2026-11-09</td><td></td></tr><tr><td>戶籍法48</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=48&amp;pcode=D0030006">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=48&amp;pcode=D0030006</a></td><td>2026-11-09</td><td></td></tr><tr><td>戶籍法79</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=79&amp;pcode=D0030006">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=79&amp;pcode=D0030006</a></td><td>2026-11-09</td><td></td></tr><tr><td>施行細則13</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=13&amp;pcode=D0030007">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=13&amp;pcode=D0030007</a></td><td>2026-11-09</td><td></td></tr><tr><td>姓名條例8</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=8&amp;pcode=D0030011">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=8&amp;pcode=D0030011</a></td><td>2026-11-09</td><td></td></tr><tr><td>748施行法4</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=4&amp;pcode=B0000008">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=4&amp;pcode=B0000008</a></td><td>2026-11-09</td><td></td></tr><tr><td>涉外民法46</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=46&amp;pcode=B0000007">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=46&amp;pcode=B0000007</a></td><td>2026-11-09</td><td></td></tr><tr><td>所得稅法15</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=15&amp;pcode=G0340003">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=15&amp;pcode=G0340003</a></td><td>2026-11-09</td><td></td></tr><tr><td>健保法2</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=2&amp;pcode=L0060001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=2&amp;pcode=L0060001</a></td><td>2026-11-09</td><td></td></tr><tr><td>兩岸條例17</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=17&amp;pcode=Q0010001">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=17&amp;pcode=Q0010001</a></td><td>2026-11-09</td><td></td></tr><tr><td>健保投保身分</td><td><a class="url" href="https://www.nhi.gov.tw/ch/cp-4532-a6e73-2616-1.html">https://www.nhi.gov.tw/ch/cp-4532-a6e73-2616-1.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>健保署｜人員資料變更之申辦</td><td><a class="url" href="https://www.nhi.gov.tw/ch/cp-7256-132dc-2625-1.html">https://www.nhi.gov.tw/ch/cp-7256-132dc-2625-1.html</a></td><td>2026-11-09</td><td>頁內日期 100-04-08</td></tr><tr><td>勞保投保對象</td><td><a class="url" href="https://www.bli.gov.tw/0007758.html">https://www.bli.gov.tw/0007758.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>勞保資料變更</td><td><a class="url" href="https://www.bli.gov.tw/0005470.html">https://www.bli.gov.tw/0005470.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>財政部新婚申報</td><td><a class="url" href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=699b17dc8a3a41a697fa0be1216c7829">https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=699b17dc8a3a41a697fa0be1216c7829</a></td><td>2026-11-09</td><td></td></tr><tr><td>領事局文件證明</td><td><a class="url" href="https://www.boca.gov.tw/np-4-1.html">https://www.boca.gov.tw/np-4-1.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>國外文件驗證</td><td><a class="url" href="https://www.boca.gov.tw/cp-43-334-ef805-1.html">https://www.boca.gov.tw/cp-43-334-ef805-1.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>兩岸同性伴侶指引</td><td><a class="url" href="https://www.immigration.gov.tw/5382/5385/7229/7232/417925">https://www.immigration.gov.tw/5382/5385/7229/7232/417925</a></td><td>2026-11-09</td><td></td></tr><tr><td>大陸配偶流程表</td><td><a class="url" href="https://www.immigration.gov.tw/media/109136/%E5%A4%A7%E9%99%B8%E9%85%8D%E5%81%B6%E5%9C%98%E8%81%9A%E8%87%B3%E5%88%9D%E8%A8%AD%E6%88%B6%E7%B1%8D%E7%99%BB%E8%A8%98%E6%B5%81%E7%A8%8B%E8%A1%A8.pdf">https://www.immigration.gov.tw/media/109136/大陸配偶團聚至初設戶籍登記流程表.pdf</a></td><td>2026-11-09</td><td>113.12.19 版</td></tr><tr><td>外籍配偶入口</td><td><a class="url" href="https://www.immigration.gov.tw/5382/5385/7344/7350/8887/">https://www.immigration.gov.tw/5382/5385/7344/7350/8887/</a></td><td>2026-11-09</td><td></td></tr><tr><td>永康戶政｜改名、改身分證號更換證件一覽表</td><td><a class="url" href="https://yungkang-house.tainan.gov.tw/cp.aspx?n=10310">https://yungkang-house.tainan.gov.tw/cp.aspx?n=10310</a></td><td>2026-11-09</td><td>更新 113-05-06；各戶所規定可能不同</td></tr><tr><td>領事局｜文件驗證後效期 FAQ</td><td><a class="url" href="https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html">https://www.boca.gov.tw/cp-43-2128-7e7d5-1.html</a></td><td>2026-11-09</td><td>更新 2017-08-29</td></tr><tr><td>戶政司 Q06｜國外結婚生效日</td><td><a class="url" href="https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html">https://www.ris.gov.tw/documents/html/8/7/1/150_Q06.html</a></td><td>2026-11-09</td><td></td></tr><tr><td>臺北市民政局 FAQ｜證人年滿18歲</td><td><a class="url" href="https://ca.gov.taipei/News_Content.aspx?n=59F2E04A34FDA3E8&amp;s=52A570FED95C6939&amp;sms=87415A8B9CE81B16">https://ca.gov.taipei/News_Content.aspx?n=59F2E04A34FDA3E8&amp;s=52A570FED95C6939&amp;sms=87415A8B9CE81B16</a></td><td>2026-11-09</td><td>資料更新 112-03-24</td></tr><tr><td>戶政司｜結婚登記作業規定 PDF</td><td><a class="url" href="https://www.ris.gov.tw/documents/data/2/1/5391f898-caa6-47d6-a4b2-1e179b7accd5.pdf">https://www.ris.gov.tw/documents/data/2/1/5391f898-caa6-47d6-a4b2-1e179b7accd5.pdf</a></td><td>2026-11-09</td><td>證人「成年且未受監護宣告」</td></tr><tr><td>《國民身分證及戶口名簿格式內容製發相片影像檔建置管理辦法》§18（換領相片）</td><td><a class="url" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030">https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=18&amp;pcode=D0030030</a></td><td>2026-11-09</td><td>最近二年相片或數位相片；檔存未滿二年且人貌相符得免繳</td></tr></tbody></table></div>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-s22_20">
+<summary>21. 版本與自行核對提醒</summary>
+<div class="appendix-body">
 <h2 id="s22_20">21. 版本與自行核對提醒</h2>
 <p>版本：v1.8</p>
 <p>資訊更新日：2026-11-09</p>
@@ -591,19 +996,43 @@ ul.check input.chk {
 <li>涉外婚姻涉及不同國籍與文件規定，應以主管機關實際要求為準。</li>
 </ol>
 <p>本商品不保證文件必然符合受理要求，也不保證特定登記日期、預約名額或申請結果。</p>
-<p>使用前，請自行點選連結核對最新資訊。</p><h2 id="buy_b">購買須知</h2><p>更新政策：購買後一年內，本商品若有內容更新，可免費下載更新版本。</p><p><strong>退款說明</strong>：本商品「結婚登記與婚後行政清單」為非以有形媒介提供之數位內容，付款後立即提供下載。依《通訊交易解除權合理例外情事適用準則》第 2 條第 5 款，購買即表示您事先同意於付款後立即提供，並經告知本商品不適用消費者保護法第 19 條第 1 項之七日解除權。檔案無法開啟、損壞或內容與說明不符時，請於購買後 30 日內聯絡我們，我們會修正、補發或退款。本說明不影響您依法享有的其他權利。</p>
+<p>使用前，請自行點選連結核對最新資訊。</p>
+</div>
+</details>
+
+<details class="appendix-item" id="wrap-buy_b" open>
+<summary>購買須知</summary>
+<div class="appendix-body">
+<h2 id="buy_b">購買須知</h2><p>更新政策：購買後一年內，本商品若有內容更新，可免費下載更新版本。</p><p><strong>退款說明</strong>：本商品「結婚登記與婚後行政清單」為非以有形媒介提供之數位內容，付款後立即提供下載。依《通訊交易解除權合理例外情事適用準則》第 2 條第 5 款，購買即表示您事先同意於付款後立即提供，並經告知本商品不適用消費者保護法第 19 條第 1 項之七日解除權。檔案無法開啟、損壞或內容與說明不符時，請於購買後 30 日內聯絡我們，我們會修正、補發或退款。本說明不影響您依法享有的其他權利。</p>
+</div>
+</details>
+
 </main>
-<footer class="site-footer"><p>結婚登記與婚後行政清單｜基礎版｜手機／網頁版式 v1.2（內容對應 A4 v1.8）｜資訊更新日 2026-11-09</p><p>離線自足 HTML；未載入外部字型或追蹤腳本。</p></footer>
+<footer class="site-footer"><p>結婚登記與婚後行政清單｜基礎版｜手機／網頁版式 v1.7（內容對應 A4 v1.8）｜資訊更新日 2026-11-09</p><p>離線自足 HTML；未載入外部字型或追蹤腳本。</p></footer>
 </div>
 <script>
-
 (function () {
   "use strict";
   var META = document.documentElement.getAttribute("data-pack") || "unknown";
   var SCHEMA = 1;
   var KEY = "marriage-checklist:" + META + ":v1";
+  var RECOVER_PREFIX = KEY + ":recovered:";
   var ERR_FMT = "備份檔格式不符";
+  var ERR_IMPORT_WRITE = "匯入失敗：無法寫入這個瀏覽器的儲存空間，原本的資料已保留。";
+  var ERR_IMPORT_READ = "匯入失敗：讀不到這個瀏覽器的儲存空間，原本的資料沒有變動。";
+  var ERR_TOO_BIG = "備份檔太大（超過 1 MB），無法匯入。";
+  var MSG_UNREADABLE = "本機儲存無法讀取，請改用匯入備份。";
+  var MSG_RECOVERED = "本機儲存的資料異常，已另外保留一份原始資料；可用匯入備份檔還原。";
+  var MSG_SAVE_LOCKED = "本機資料讀不到，也無法另存，變更暫不自動保存。請先按「匯出備份」，備份檔會一併保留原始資料。";
+  var MSG_SAVE_LOCKED_UNREADABLE = "目前無法讀取本機資料，已暫停自動儲存。請先匯出備份，再重新整理頁面。";
+  var MSG_CONFIRM_LOCKED = "目前本機有讀不到的舊資料，匯入後會被取代。";
   var MAX_NOTES = 4000;
+  var MAX_IMPORT_BYTES = 1048576; // 1 MB
+  var MSG_NOTES_SAVE = "備註超過 " + MAX_NOTES + " 字，請刪減後才會保存。";
+  var MSG_NOTES_EXPORT = "備註超過 " + MAX_NOTES + " 字，請刪減後再匯出。";
+  var hasOwn = Object.prototype.hasOwnProperty;
+  var saveLocked = false; // true: main key unreadable/unsavable, do not touch it
+  var lockedRaw = null;   // raw main-key string held in memory while locked (null if it could not be read)
 
   function $(id) { return document.getElementById(id); }
   function status(msg) {
@@ -613,10 +1042,14 @@ ul.check input.chk {
   function logErr(detail) {
     try { console.error("[backup]", detail); } catch (e0) {}
   }
+  function toArray(list) { return Array.prototype.slice.call(list || []); }
+  function checkEls() { return toArray(document.querySelectorAll("input.chk[data-id]")); }
+  function hasChecks() { return checkEls().length > 0; }
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
 
   function collect() {
     var checks = {};
-    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+    checkEls().forEach(function (el) {
       checks[el.getAttribute("data-id")] = !!el.checked;
     });
     var notesEl = $("personal-notes");
@@ -630,7 +1063,9 @@ ul.check input.chk {
     };
   }
 
+  // Validate only; never touches the DOM. Throws Error(ERR_FMT) on any problem.
   function validate(data) {
+    var i, keys, known = 0, els;
     if (!data || typeof data !== "object" || Array.isArray(data)) {
       logErr("not object"); throw new Error(ERR_FMT);
     }
@@ -643,25 +1078,96 @@ ul.check input.chk {
     if (!data.checks || typeof data.checks !== "object" || Array.isArray(data.checks)) {
       logErr("checks"); throw new Error(ERR_FMT);
     }
+    keys = Object.keys(data.checks);
+    for (i = 0; i < keys.length; i++) {
+      if (typeof data.checks[keys[i]] !== "boolean") {
+        logErr("checks value not boolean: " + keys[i]); throw new Error(ERR_FMT);
+      }
+    }
+    els = checkEls();
+    if (els.length > 0) {
+      for (i = 0; i < els.length; i++) {
+        if (hasOwn.call(data.checks, els[i].getAttribute("data-id"))) known++;
+      }
+      if (known < 1) {
+        logErr("checks has no known id"); throw new Error(ERR_FMT);
+      }
+    }
+    if (typeof data.notes !== "string") {
+      logErr("notes"); throw new Error(ERR_FMT);
+    }
+    if (data.notes.length > MAX_NOTES) {
+      logErr("notes too long"); throw new Error(ERR_FMT);
+    }
   }
 
-  function applyData(data) {
-    validate(data);
-    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+  // Number of own keys in data.checks that this page has no checkbox for.
+  function countUnknownChecks(data) {
+    var ids = Object.create(null);
+    var keys = Object.keys(data.checks);
+    var i, n = 0;
+    checkEls().forEach(function (el) { ids[el.getAttribute("data-id")] = true; });
+    for (i = 0; i < keys.length; i++) {
+      if (ids[keys[i]] !== true) n++;
+    }
+    return n;
+  }
+
+  // Apply already-validated data (or a snapshot) to the page.
+  function applyToDom(state) {
+    checkEls().forEach(function (el) {
       var id = el.getAttribute("data-id");
-      el.checked = !!data.checks[id];
+      el.checked = hasOwn.call(state.checks, id) ? state.checks[id] === true : false;
     });
     var notesEl = $("personal-notes");
-    if (notesEl) {
-      var n = typeof data.notes === "string" ? data.notes : "";
-      if (n.length > MAX_NOTES) n = n.slice(0, MAX_NOTES);
-      notesEl.value = n;
+    if (notesEl && typeof state.notes === "string") notesEl.value = state.notes;
+  }
+
+  function snapshot() {
+    var s = collect();
+    return { checks: s.checks, notes: s.notes };
+  }
+
+  // Keep an untouched copy of unreadable main-key content.
+  // Returns true if a backup with identical content exists (or was just written).
+  // Never overwrites an existing key; never throws.
+  function backupRaw(raw) {
+    try {
+      var i, k, base, name, n;
+      for (i = 0; i < localStorage.length; i++) {
+        k = localStorage.key(i);
+        if (k && k.indexOf(RECOVER_PREFIX) === 0 && localStorage.getItem(k) === raw) return true;
+      }
+      base = RECOVER_PREFIX + Date.now();
+      name = base;
+      n = 1;
+      while (localStorage.getItem(name) !== null) { name = base + "-" + n; n++; }
+      localStorage.setItem(name, raw);
+      if (localStorage.getItem(name) !== raw) {
+        try { localStorage.removeItem(name); } catch (e1) { logErr(e1); }
+        return false;
+      }
+      return true;
+    } catch (e) {
+      logErr(e);
+      return false;
     }
   }
 
   function save() {
+    var data;
+    if (saveLocked) {
+      // Export includes corruptRaw only when the raw string is held in memory.
+      status(typeof lockedRaw === "string" ? MSG_SAVE_LOCKED : MSG_SAVE_LOCKED_UNREADABLE);
+      return;
+    }
+    data = collect();
+    if (data.notes.length > MAX_NOTES) {
+      status(MSG_NOTES_SAVE); // keep the last valid main-key value; never truncate user text
+      return;
+    }
     try {
-      localStorage.setItem(KEY, JSON.stringify(collect()));
+      localStorage.setItem(KEY, JSON.stringify(data));
       status("已自動保存在這個瀏覽器。");
     } catch (e) {
       logErr(e);
@@ -670,62 +1176,141 @@ ul.check input.chk {
   }
 
   function load() {
+    var raw = null;
+    var data = null;
     try {
-      var raw = localStorage.getItem(KEY);
-      if (!raw) return;
-      applyData(JSON.parse(raw));
-      status("已載入本機儲存的備註。");
-    } catch (e) {
-      logErr(e);
-      status("本機儲存無法讀取，請改用匯入備份。");
+      raw = localStorage.getItem(KEY);
+    } catch (e0) {
+      logErr(e0);
+      saveLocked = true; // cannot read the old value, so never overwrite it by autosave
+      status(MSG_UNREADABLE);
+      return;
+    }
+    // An empty string holds nothing recoverable and save() never writes one, so treat it
+    // like "no data": no rescue copy, no lock, no message. Whitespace-only still goes the rescue path.
+    if (raw === null || raw === "") return;
+    try {
+      data = JSON.parse(raw);
+      validate(data);
+    } catch (e1) {
+      logErr(e1);
+      if (backupRaw(raw)) {
+        status(MSG_RECOVERED);
+      } else {
+        saveLocked = true;
+        lockedRaw = raw;
+        status(MSG_UNREADABLE);
+      }
+      return;
+    }
+    try {
+      applyToDom(data);
+      status(hasChecks() ? "已載入本機儲存的勾選與備註。" : "已載入本機儲存的備註。");
+    } catch (e2) {
+      logErr(e2);
+      status(MSG_UNREADABLE);
     }
   }
 
   function exportBackup() {
     var data = collect();
+    var withRaw = saveLocked && typeof lockedRaw === "string";
     var stamp = new Date();
-    var y = stamp.getFullYear();
-    var m = String(stamp.getMonth() + 1).padStart(2, "0");
-    var d = String(stamp.getDate()).padStart(2, "0");
-    var name = "marriage-checklist-" + META + "-backup-" + y + m + d + ".json";
-    var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-    var a = document.createElement("a");
+    var name, blob, a;
+    if (data.notes.length > MAX_NOTES) {
+      status(MSG_NOTES_EXPORT);
+      return;
+    }
+    if (withRaw) data.corruptRaw = lockedRaw; // verbatim, never trimmed or truncated (size cap does not apply here)
+    name = "marriage-checklist-" + META + "-backup-" +
+      stamp.getFullYear() + pad2(stamp.getMonth() + 1) + pad2(stamp.getDate()) + "-" +
+      pad2(stamp.getHours()) + pad2(stamp.getMinutes()) + ".json";
+    blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = name;
     document.body.appendChild(a);
     a.click();
     setTimeout(function () {
       URL.revokeObjectURL(a.href);
-      a.remove();
+      if (a.parentNode) a.parentNode.removeChild(a);
     }, 0);
-    status("已匯出：" + name + "。請定期按匯出備份。");
+    status(withRaw
+      ? "已匯出：" + name + "。檔內含讀不到的原始資料，請妥善保存。"
+      : "已匯出：" + name + "。請定期按匯出備份。");
+  }
+
+  function commitImport(data) {
+    var before = snapshot();
+    var prevRaw = null;
+    var n;
+    try {
+      prevRaw = localStorage.getItem(KEY);
+    } catch (e0) {
+      logErr(e0);
+      status(ERR_IMPORT_READ); // cannot see what is there: touch nothing, stay locked if locked
+      return;
+    }
+    // Rescue copies are made before the main key is replaced; their results never affect the import.
+    // 1) corruptRaw carried by the file.
+    if (hasOwn.call(data, "corruptRaw") && typeof data.corruptRaw === "string" && data.corruptRaw !== "") {
+      backupRaw(data.corruptRaw);
+    }
+    // 2) the raw string still held in memory while locked (backupRaw skips it if identical content exists).
+    if (saveLocked && typeof lockedRaw === "string") {
+      backupRaw(lockedRaw);
+    }
+    try {
+      applyToDom(data);
+      localStorage.setItem(KEY, JSON.stringify(collect()));
+    } catch (e1) {
+      logErr(e1);
+      try { applyToDom(before); } catch (e2) { logErr(e2); }
+      try {
+        if (prevRaw === null) localStorage.removeItem(KEY);
+        else localStorage.setItem(KEY, prevRaw);
+      } catch (e3) { logErr(e3); }
+      status(ERR_IMPORT_WRITE);
+      return;
+    }
+    saveLocked = false; // successful write: unlock autosave
+    lockedRaw = null;
+    n = countUnknownChecks(data);
+    status(n > 0 ? "匯入完成。有 " + n + " 個本頁沒有的項目未匯入。" : "匯入完成。");
   }
 
   function importBackup(file) {
     if (!file) return;
+    if (file.size > MAX_IMPORT_BYTES) {
+      status(ERR_TOO_BIG);
+      return;
+    }
     var reader = new FileReader();
     reader.onload = function () {
       var data;
+      var text = String(reader.result || "");
+      if (text.length > MAX_IMPORT_BYTES) {
+        status(ERR_TOO_BIG);
+        return;
+      }
       try {
-        data = JSON.parse(String(reader.result || ""));
+        data = JSON.parse(text);
         validate(data);
       } catch (e) {
         logErr(e && e.message ? e.message : e);
         status(ERR_FMT);
         return;
       }
-      if (!window.confirm("匯入會覆蓋目前這個瀏覽器裡的備註。確定繼續？")) {
+      var msg = hasChecks()
+        ? "匯入會覆蓋目前這個瀏覽器裡的勾選與備註。舊版備份沒有的新項目會變成未勾選。"
+        : "匯入會覆蓋目前這個瀏覽器裡的備註。";
+      if (saveLocked) msg += MSG_CONFIRM_LOCKED;
+      msg += "確定繼續？";
+      if (!window.confirm(msg)) {
         status("已取消匯入。");
         return;
       }
-      try {
-        applyData(data);
-        save();
-        status("匯入完成。");
-      } catch (e2) {
-        logErr(e2);
-        status(ERR_FMT);
-      }
+      commitImport(data);
     };
     reader.onerror = function () {
       logErr("read error");
@@ -734,8 +1319,12 @@ ul.check input.chk {
     reader.readAsText(file);
   }
 
+  function setAllDetails(open) {
+    toArray(document.querySelectorAll("details")).forEach(function (el) { el.open = open; });
+  }
+
   function wire() {
-    document.querySelectorAll("input.chk[data-id]").forEach(function (el) {
+    checkEls().forEach(function (el) {
       el.addEventListener("change", save);
     });
     var notes = $("personal-notes");
@@ -758,7 +1347,25 @@ ul.check input.chk {
     window.addEventListener("storage", function (ev) {
       if (ev.key === KEY) load();
     });
+    var btnExAll = $("btn-expand-all");
+    var btnColAll = $("btn-collapse-all");
+    if (btnExAll) btnExAll.addEventListener("click", function () { setAllDetails(true); });
+    if (btnColAll) btnColAll.addEventListener("click", function () { setAllDetails(false); });
   }
+
+  function openHashTarget() {
+    var id = (location.hash || "").replace(/^#/, "");
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    var cur = el;
+    while (cur) {
+      if (cur.tagName === "DETAILS") cur.open = true;
+      cur = cur.parentElement;
+    }
+  }
+  window.addEventListener("hashchange", openHashTarget);
+  openHashTarget();
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () { load(); wire(); });
@@ -766,7 +1373,6 @@ ul.check input.chk {
     load(); wire();
   }
 })();
-
 </script>
 </body>
 </html>
